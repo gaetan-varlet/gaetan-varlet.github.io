@@ -1,0 +1,29 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Sommaire de mes diff\u00e9rents d\u00e9p\u00f4ts\n\n\nTutoriels\n\n\n\n\n\n\nTutoriel HTML CSS\n\n\n\n\nfiches\n\n\nexercice de cr\u00e9ation d'une page d'accueil d'une agence de voyage\n\n\nd\u00e9p\u00f4t\n\n\npage Web\n\n\n\n\n\n\n\n\n\n\n\n\nTutoriel JavaScript\n\n\n\n\nfiches\n\n\nexercice de cr\u00e9ation du jeu du snake (version avec webpack)\n\n\nd\u00e9p\u00f4t\n\n\npage Web\n\n\n\n\n\n\nexercice de cr\u00e9ation de l'application World Bucket List\n\n\nd\u00e9p\u00f4t\n\n\npage Web\n\n\n\n\n\n\n\n\n\n\n\n\nTutoriel jQuery (TODO)\n\n\n\n\n\n\nTutoriel Bootstrap (TODO)\n\n\n\n\n\n\nTutoriel React-Redux\n\n\n\n\n\n\nTutoriel Java (DOING)\n\n\n\n\n\n\nTutoriel Java EE (DOING)\n\n\n\n\n\n\nTutoriel Python (DOING)\n\n\n\n\n\n\nTutoriel SQL (DOING)\n\n\n\n\n\n\nTutoriel Git (DOING)\n\n\n\n\n\n\nTutoriel Linux (DOING)\n\n\n\n\n\n\nTutoriel Docker\n\n\n\n\n\n\nTutoriel VS Code (DOING)\n\n\n\n\n\n\nFormation API Rest\n\n\n\n\nD\u00e9p\u00f4t\n\n\nDiaporama\n\n\n\n\n\n\n\n\nFormation Spring Data (TODO)\n\n\n\n\n\n\nProjets\n\n\n\n\nAdvent Of Code\n\n\nRapport Biture-Prix Project\n\n\n\n\n\n\nd\u00e9p\u00f4t\n\n\npage Web\n\n\n\n\n\n\nParseur CSV\n\n\n\n\nDivers\n\n\n\n\nFiche pour l'examen d'analyste d\u00e9veloppeur\n\n\nFiche pour le concours d'Attach\u00e9 Principal\n\n\nInt\u00e9gration continue Gitlab",
+            "title": "Sommaire"
+        },
+        {
+            "location": "/#sommaire-de-mes-differents-depots",
+            "text": "",
+            "title": "Sommaire de mes diff\u00e9rents d\u00e9p\u00f4ts"
+        },
+        {
+            "location": "/#tutoriels",
+            "text": "Tutoriel HTML CSS   fiches  exercice de cr\u00e9ation d'une page d'accueil d'une agence de voyage  d\u00e9p\u00f4t  page Web       Tutoriel JavaScript   fiches  exercice de cr\u00e9ation du jeu du snake (version avec webpack)  d\u00e9p\u00f4t  page Web    exercice de cr\u00e9ation de l'application World Bucket List  d\u00e9p\u00f4t  page Web       Tutoriel jQuery (TODO)    Tutoriel Bootstrap (TODO)    Tutoriel React-Redux    Tutoriel Java (DOING)    Tutoriel Java EE (DOING)    Tutoriel Python (DOING)    Tutoriel SQL (DOING)    Tutoriel Git (DOING)    Tutoriel Linux (DOING)    Tutoriel Docker    Tutoriel VS Code (DOING)    Formation API Rest   D\u00e9p\u00f4t  Diaporama     Formation Spring Data (TODO)",
+            "title": "Tutoriels"
+        },
+        {
+            "location": "/#projets",
+            "text": "Advent Of Code  Rapport Biture-Prix Project    d\u00e9p\u00f4t  page Web    Parseur CSV",
+            "title": "Projets"
+        },
+        {
+            "location": "/#divers",
+            "text": "Fiche pour l'examen d'analyste d\u00e9veloppeur  Fiche pour le concours d'Attach\u00e9 Principal  Int\u00e9gration continue Gitlab",
+            "title": "Divers"
+        }
+    ]
+}
