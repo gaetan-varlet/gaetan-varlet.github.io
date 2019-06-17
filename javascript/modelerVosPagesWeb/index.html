@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Modeler vos pages web (RECUP DES CHOSES PUIS SUPPRIMER) - Gaëtan Varlet</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Gaëtan Varlet</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Sommaire</a>
+                            </li>
+                            <li >
+                                <a href="../../tutoriel-linux/">Linux</a>
+                            </li>
+                            <li >
+                                <a href="../../html-css/">HTML/CSS</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Javascript <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../">Sommaire</a>
+</li>
+                                    
+<li >
+    <a href="../lesBasesDeJavaScript/">Les bases de JavaScript</a>
+</li>
+                                    
+<li >
+    <a href="../vraimentBienComprendreJavaScript/">Vraiment bien comprendre JavaScript</a>
+</li>
+                                    
+<li >
+    <a href="../developpementModerneJavascript/">Développement moderne Javascript et ES6, ES7</a>
+</li>
+                                    
+<li >
+    <a href="../objetsEtFonctionsUtilesJavascript/">Objets et fonctions utiles Javascript</a>
+</li>
+                                    
+<li >
+    <a href="../javascriptDebarqueDansLeNavigateur/">Javascript débarque dans le navigateur</a>
+</li>
+                                    
+<li >
+    <a href="../frameworksJavascript/">Les bibliothèques et frameworks JavaScript (TODO)</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Modeler vos pages web (RECUP DES CHOSES PUIS SUPPRIMER)</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../frameworksJavascript/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#manipuler-le-code-html-partie-12">Manipuler le code HTML (partie 1/2)</a></li>
+        <li class="main "><a href="#manipuler-le-code-html-partie-22">Manipuler le code HTML (partie 2/2)</a></li>
+            <li><a href="#naviguer-entre-les-noeuds">Naviguer entre les noeuds</a></li>
+            <li><a href="#creer-et-inserer-des-elements">Créer et insérer des éléments</a></li>
+            <li><a href="#notions-sur-les-references">Notions sur les références</a></li>
+            <li><a href="#cloner-remplacer-supprimer">Clôner, remplacer, supprimer</a></li>
+            <li><a href="#autres-actions">Autres actions</a></li>
+            <li><a href="#-">----</a></li>
+        <li class="main "><a href="#les-evenements">Les événements</a></li>
+            <li><a href="#que-sont-les-evenements">Que sont les événements</a></li>
+            <li><a href="#les-evenements-au-travers-du-dom">Les événements au travers du DOM</a></li>
+            <li><a href="#lobjet-event">L'objet Event</a></li>
+            <li><a href="#resoudre-les-problemes-dheritage-des-evenements">Résoudre les problèmes d'héritage des événements</a></li>
+            <li><a href="#-_1">----</a></li>
+        <li class="main "><a href="#les-formulaires">Les formulaires</a></li>
+            <li><a href="#les-proprietes">Les propriétés</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="manipuler-le-code-html-partie-12">Manipuler le code HTML (partie 1/2)</h1>
+<hr />
+<h1 id="manipuler-le-code-html-partie-22">Manipuler le code HTML (partie 2/2)</h1>
+<hr />
+<h2 id="naviguer-entre-les-noeuds">Naviguer entre les noeuds</h2>
+<h3 id="la-propriete-parentnode">La propriété <code>parentNode</code></h3>
+<p>Elle permet d'accéder à l'élément parent d'un élément.</p>
+<pre><code class="html">&lt;blockquote&gt;
+    &lt;p id=&quot;myP&quot;&gt;Ceci est un paragraphe !&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre>
+
+<pre><code class="js">var paragraph = document.getElementById('myP');
+var blockquote = paragraph.parentNode;
+</code></pre>
+
+<p><code>nodeType</code> et <code>nodeName</code> permettent de vérifier le type d'un noeud et le nom d'un noeud. <code>nodeType</code> retourne un nombre qui correspond à un type de noeud : 1 pour noeuf élément, 2 pour noeud attribut, 3 pour noeud texte...</p>
+<p><code>firstChild</code> et <code>lastChild</code> permettent d'accéder au premier et au dernier enfant d'un noeud. Dans l'exemple suivant, le premier enfant de <code>&lt;p&gt;</code> est un noeud textuel, le dernier enfant un élément <code>&lt;strong&gt;</code>. Il existe aussi les prorpriétés <code>firstElementChild</code> et <code>lastElementChild</code> pour éviter les noeuds <code>#text</code>.</p>
+<pre><code class="html">&lt;p id=&quot;myP&quot;&gt;Un peu de texte, &lt;a&gt;un lien&lt;/a&gt; et &lt;strong&gt;une portion en emphase&lt;/strong&gt;&lt;/p&gt;
+</code></pre>
+
+<pre><code class="js">var paragraph = document.getElementById('myP');
+var first = paragraph.firstChild;
+var last = paragraph.lastChild;
+</code></pre>
+
+<h3 id="autres-proprietes">Autres propriétés</h3>
+<ul>
+<li><code>nodeValue</code> et <code>data</code> sont des propriétés qui s'appliquent sur des noeuds textuels et affichent le contenu</li>
+</ul>
+<pre><code class="js">var paragraph = document.getElementById('myP');
+var first = paragraph.firstChild;
+var last = paragraph.lastChild;
+
+alert(first.nodeValue);
+alert(last.firstChild.data);
+</code></pre>
+
+<ul>
+<li><code>childNodes</code> est une propriété qui retourne un tableau contenant la liste des enfants d'un élément</li>
+<li><code>nextSibling</code> et <code>previousSibling</code> permettent d'accéder au noeud suivant et précédent</li>
+</ul>
+<h3 id="attention-au-noeuds-vides">Attention au noeuds vides</h3>
+<pre><code class="html">&lt;div&gt;
+    &lt;p&gt;Paragraphe 1&lt;/p&gt;
+    &lt;p&gt;Paragraphe 2&lt;/p&gt;
+    &lt;p&gt;Paragraphe 3&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="html">&lt;div&gt;&lt;p&gt;Paragraphe 1&lt;/p&gt;&lt;p&gt;Paragraphe 2&lt;/p&gt;&lt;p&gt;Paragraphe 3&lt;/p&gt;&lt;/div&gt;
+</code></pre>
+
+<p>Les espaces ou les retours à la ligne sont considérés comme des noeuds textuels dans certains navigateurs. Dans le premier exemple, on a donc 7 noeuds enfants dans la <code>&lt;div&gt;</code> : un <code>#text</code> vide suivi d'un <code>&lt;p&gt;</code> suivi d'un <code>#text</code> vide... alors que dans le deuxième exemple, on a 3 noeuds enfants qui sont des <code>&lt;p&gt;</code>.<br />
+Pour éviter ces noeuds textuels vides, il faut utiliser les attributs <code>firstElementChild</code>, <code>lastElementChild</code>, <code>nextElementSibling</code> et <code>previousElementSibling</code> qui ne retournent que les éléments HTML et ignorent donc les noeuds textuels.</p>
+<hr />
+<h2 id="creer-et-inserer-des-elements">Créer et insérer des éléments</h2>
+<p>Pour ajouter des éléments HTML avec le DOM il faut :
+- créer l'élément
+  - se fait avec la méthode <code>createElement()</code>
+  - <code>var newLink = document.createElement('a');</code> crée un élément <code>&lt;a&gt;</code> mais celui-ci n'est pas inséré dans le document, il n'est donc pas visible
+- lui affecter des attributs
+  - on définit des attributs soit avec <code>setAttribute()</code>, soit directement avec les propriétés adéquates
+  - <code>newLink.id = 'sdz_link';</code> ou <code>newLink.setAttribute('tabindex', '10');</code>
+- l'insérer dans le document
+  - se fait avec la méthode <code>appendChild()</code>
+  - par exemple <code>document.getElementById('myP').appendChild(newLink);</code> ajoute notre élément <code>&lt;a&gt;</code> dans l'élément <code>&lt;p&gt;</code> portant l'ID <code>myP</code> en tant que dernier enfant</p>
+<p><strong>Ajouter des noeuds textuels</strong>
+La méthode <code>createTextNode()</code> sert à créer un noeud de type <code>#text</code>. Il faut ensuite l'insérer avec la méthode <code>appendChild()</code> sur l'élément <code>newLink</code>.</p>
+<pre><code class="js">var newLinkText = document.createTextNode(&quot;Le Site du Zéro&quot;);
+newLink.appendChild(newLinkText);
+</code></pre>
+
+<hr />
+<h2 id="notions-sur-les-references">Notions sur les références</h2>
+<p>En JavaScript, le contenu des variables est <strong>passé par valeur</strong>, c'est-à-dire que si on affecte la valeur d'une variable à une autre variable, la valeur est copiée dans une nouvelle, on a donc deux variables distinctes. Si on change la valeur d'une deux deux variables, l'autre reste inchangé.<br />
+JavaScript possède aussi aussi un <strong>passage par référence</strong>, c'est-à-dire qu'on transmet l'adresse de la valeur, on peut donc avoir plusieurs variables qui pointent sur une même valeur. On verra des exemples avec la création d'objets.</p>
+<p>Le concept de référence se retrouve avec le DOM : deux variables peuvent accéder au même élément. Dans l'exemple suivant, la variable <code>newLink</code> contient une référence vers l'élément <code>&lt;a&gt;</code> créé (une adresse qui pointe vers <code>&lt;a&gt;</code>). Une fois l'élément HTML inséré dans la page, on peut y accéder de nombreuses façons, comme avec <code>getElementById</code>.</p>
+<pre><code class="js">var newLink = document.createElement('a');
+var newLinkText = document.createTextNode('Le Site du Zéro');
+
+newLink.id = 'sdz_link';
+newLink.href = 'http://www.siteduzero.com';
+
+newLink.appendChild(newLinkText);
+
+document.getElementById('myP').appendChild(newLink);
+</code></pre>
+
+<p>Il faut retenir que les objets du DOM sont toujours accessibles par référence. On ne peut donc pas copier un élément de la manière suivante, car les deux variables pointent vers le même élément. Pour duppliquer un élément, il va faloir le clôner.</p>
+<pre><code class="js">var newDiv1 = document.createElement('div');
+var newDiv2 = newDiv1; // On tente de copier le &lt;div&gt;
+</code></pre>
+
+<hr />
+<h2 id="cloner-remplacer-supprimer">Clôner, remplacer, supprimer</h2>
+<p><code>cloneNode()</code> permet de cloner un élément, avec un paramètre à renseigner à <code>true</code> ou <code>false</code> si on souhaite clôner le noeud avec ou sans ses enfants et ses différents attributs. Attention, les événements ne sont pas copiés.</p>
+<pre><code class="js">// On va cloner un élément créé :
+var hr1 = document.createElement('hr');
+var hr2 = hr1.cloneNode(false); // Il n'a pas d'enfants…
+
+// Ici, on clone un élément existant :
+var paragraph1 = document.getElementById('myP');
+var paragraph2 = paragraph1.cloneNode(true);
+
+// Et attention, l'élément est cloné, mais pas « inséré » tant que l'on n'a pas appelé appendChild() :
+paragraph1.parentNode.appendChild(paragraph2);
+</code></pre>
+
+<p><code>replaceChild()</code> permet de remplacer un élément par un autre. Il y a deux paramètres : le nouvel élément et l'élément à remplacer</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div&gt;
+        &lt;p id=&quot;myP&quot;&gt;Un peu de texte &lt;a&gt;et un lien&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        var link = document.querySelector('a');
+        var newLabel = document.createTextNode('et un hyperlien');
+
+        link.replaceChild(newLabel, link.firstChild);
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p><code>removeChild()</code> permet de supprimer un élément. La méthode prend en paramètre le noeud enfant à retirer. La méthode retourne l'élément supprimé, il est donc possible de supprimer un élément HTML et de la réintégrer ensuite.</p>
+<pre><code class="js">var link = document.querySelector('a');
+link.parentNode.removeChild(link);
+</code></pre>
+
+<hr />
+<h2 id="autres-actions">Autres actions</h2>
+<p><code>hasChildNodes</code> appliquée sur un élément renvoie true si l'élément possède au moins un enfant, false sinon</p>
+<p><code>insertBefore</code> permet d'insérer un élément avant un autre, avec en paramètre l'élément à insérer et l'élément avant lequel insérer l'élément</p>
+<h2 id="-">----</h2>
+<h1 id="les-evenements">Les événements</h1>
+<hr />
+<h2 id="que-sont-les-evenements">Que sont les événements</h2>
+<p>Les événements permettent de déclencher une fonction selon qu'une action s'est produite ou non, par exemple faire apparaître une fenêtre <code>alert()</code> au survol d'une zone d'un élément.</p>
+<h3 id="liste-des-evenements">Liste des événements</h3>
+<ul>
+<li><code>click</code>: cliquer (appuyer puis relâcher) sur l'élément</li>
+<li><code>dblclick</code> : double-cliquer sur l'élément</li>
+<li><code>mouseover</code> : faire entrer le curseur sur l'élément</li>
+<li><code>mouseout</code> : faire sortir le curseur de l'élément</li>
+<li><code>mousedown</code> : appuyer (sans relâcher) sur le bouton gauche de la souris sur l'élément</li>
+<li><code>mouseup</code> : relâcher le bouton gauche de la souris sur l'élément</li>
+<li><code>mousemove</code> : faire déplacer le curseur sur l'élément</li>
+<li><code>keydown</code> : appuyer (sans relâcher) sur une touche de clavier sur l'élément</li>
+<li><code>keyup</code> : relâcher une touche de clavier sur l'élément</li>
+<li><code>keypress</code> : frapper (appuyer puis relâcher) une touche de clavier sur l'élément</li>
+<li><code>focus</code> : cibler l'élément, pour qu'il reçoive tous les événement du clavier</li>
+<li><code>blur</code> : annuler le ciblage de l'élément</li>
+<li><code>input</code> : taper un caractère dans un champ texte (support incomplet selon les navigateurs)</li>
+<li><code>select</code> : sélectionner le contenu d'un champ de texte (input, textarea...)</li>
+</ul>
+<p>Il existe aussi deux événéments spécifiques à l'élément <code>form</code>
+- <code>submit</code> pour envoyer le formulaire
+- <code>reset</code> pour réinitialiser le formulaire</p>
+<h3 id="utiliser-les-evenements-sans-le-dom">Utiliser les événéments sans le DOM</h3>
+<ul>
+<li>l'événement <code>click</code>. Dans l'exemple, il permet en cliquant sur le texte d'afficher la boite de dialogue</li>
+</ul>
+<pre><code class="html">&lt;span onclick=&quot;alert('Hello !');&quot;&gt;Cliquez-moi !&lt;/span&gt;
+</code></pre>
+
+<ul>
+<li>le mot clé <code>this</code> est une propriété pointant sur l'objet courant. L'appel à ce mot-clé lors d'un événement fait que l'objet pointé est l'élément qui a déclanché l'événement</li>
+</ul>
+<pre><code class="html">&lt;span onclick=&quot;alert('Voici le contenu de l\'élément que vous avez cliqué :\n\n' + this.innerHTML);&quot;&gt;Cliquez-moi !&lt;/span&gt;
+</code></pre>
+
+<ul>
+<li>le focus. Dans l'exemple, lorsqu'on clique sur l'input, il possède le focus et exécute l'événement <code>focus</code>. Lorsque l'input perd le focus, cela déclenche l'événement <code>blur</code></li>
+</ul>
+<pre><code class="html">&lt;input id=&quot;input&quot; type=&quot;text&quot; size=&quot;50&quot; value=&quot;Cliquez ici !&quot; onfocus=&quot;this.value='Appuyez maintenant sur votre touche de tabulation.';&quot; onblur=&quot;this.value='Cliquez ici !';&quot;/&gt;
+&lt;br /&gt;&lt;br/&gt;
+&lt;a href=&quot;#&quot; onfocus=&quot;document.getElementById('input').value = 'Vous avez maintenant le focus sur le lien, bravo !';&quot;&gt;Un lien bidon&lt;/a&gt;
+</code></pre>
+
+<ul>
+<li>bloquer l'action par défaut. Par exemple, ne pas rediriger vers l'URL indiqué lorsqu'on clique sur un lien, en ajoutant dans <code>return false; dans l'événément</code>. On peut éventuellement mettre <code>"#"</code> dans le href, ce qui redirige en haut de la page Web</li>
+</ul>
+<pre><code class="html">&lt;a href=&quot;http://www.siteduzero.com&quot; onclick=&quot;alert('Vous avez cliqué !'); return false;&quot;&gt;Cliquez-moi !&lt;/a&gt;
+</code></pre>
+
+<p>Par ailleurs, la balise <code>&lt;a&gt;</code> est conçue pour rediriger vers une page Web et non pour servir de déclencheur. Pour cela, utiliser une balise <code>&lt;button&gt;</code> aà laquelle on retire le style CSS</p>
+<hr />
+<h2 id="les-evenements-au-travers-du-dom">Les événements au travers du DOM</h2>
+<h3 id="le-dom-0">Le DOM-0</h3>
+<ul>
+<li>interface ancienne implémentée par Netscape, appelée DOM-0</li>
+<li>on définit les événements non plus dans le code HTML mais directement en JavaScript. Chaque événement standard possède une propriété dont le nom est précédé des deux lettres "on". Cette propriété prend pour valeur une fonction ou une fonction anonyme</li>
+<li>pour supprimer un événement avec le DOM-0, il fait lui attribuer une fonction anonyme vide <code>element.onclick = function() {};</code></li>
+</ul>
+<pre><code class="html">  &lt;span id=&quot;clickme&quot;&gt;Cliquez-moi !&lt;/span&gt;
+
+  &lt;script&gt;
+
+      var element = document.getElementById('clickme');
+
+      element.onclick = function() {
+          alert(&quot;Vous m'avez cliqué !&quot;);
+      };
+
+  &lt;/script&gt;
+</code></pre>
+
+<h3 id="le-dom-2">Le DOM-2</h3>
+<ul>
+<li>la méthode sans le DOM ne permet pas d'accéder à l'objet <code>Event</code> qui contient beaucoup d'informations sur l'événement déclenché</li>
+<li>le DOM-0 est vieux et ne permet pas de créer plusieurs fois le même événement</li>
+<li>le DOM-2 permet la création multiple d'un même événement et gère aussi l'objet <code>Event</code></li>
+</ul>
+<pre><code class="html">&lt;span id=&quot;clickme&quot;&gt;Cliquez-moi !&lt;/span&gt;
+
+&lt;script&gt;
+    var element = document.getElementById('clickme');
+
+    element.addEventListener('click', function() {
+        alert(&quot;Vous m'avez cliqué !&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+
+<p>Dans cet exemple, ce qui change par rapport au DOM-0 et qu'on n'utilise plus une propriété mais la méthode <code>addEventListener()</code> qui prend 3 paramètres : le nom de l'événément sans "on, la fonction à exécuter, et un booléen optionnel pour spécifier si on souhaite utiliser la phase de capture ou de bouillennement (cf ci-après)</p>
+<p>On peut créer deux événements identiques pour un même élément. Ainsi, lors du déclenchement, les 2 événements seront exécutés.</p>
+<pre><code class="html">&lt;span id=&quot;clickme&quot;&gt;Cliquez-moi !&lt;/span&gt;
+
+&lt;script&gt;
+    var element = document.getElementById('clickme');
+
+    // Premier événement click
+    element.addEventListener('click', function() {
+        alert(&quot;Et de un !&quot;);
+    });
+
+    // Deuxième événement click
+    element.addEventListener('click', function() {
+        alert(&quot;Et de deux !&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+
+<p>Pour supprimer un événement, il faut utiliser la méthode <code>removeEventListener()</code> avec les mêmes paramètres utilisés lors de sa création</p>
+<pre><code class="js">element.addEventListener('click', myFunction); // On crée l'événement
+element.removeEventListener('click', myFunction); // On supprime l'événement en lui repassant les mêmes paramètres
+</code></pre>
+
+<h3 id="les-phases-de-capture-et-de-bouillonnement">Les phases de capture et de bouillonnement</h3>
+<p>Ce sont deux étapes distinctes de l'exécution d'un événement. La <strong>capture</strong> s'exécute avant le déclenchement de l'événement tandis que le <strong>bouillonnement</strong> s'exécute après le déclenchement de l'événement. Elles permettent de définir le sens de propagation des événements</p>
+<pre><code class="html">&lt;div&gt;
+    &lt;span&gt;Du texte !&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Dans cet exemple, si on attribue une fonction à l'événement <code>click</code> de chacun de ces deux éléments, quel événement va se déclencher en premier ? Avec la capture, l'événement du <code>&lt;div&gt;</code> se déclenchera en premier suivi de celui du <code>&lt;span&gt;</code>. Avec le bouillonnement, l'événement du <code>&lt;span&gt;</code> se déclenchera d'abord. <strong>La phase de bouillonnement est définie par défaut</strong> et celle qu'on utilise le plus souvent.</p>
+<hr />
+<h2 id="lobjet-event">L'objet Event</h2>
+<p>L'objet <code>Event</code> fournit une multitude d'informations sur l'événement actuellement déclenché, comme les touches actuellement enfoncés, les coordonnées du curseur, l'élément qui a déclenché l'événement...<br />
+Cet objet n'est accessible que lorsqu'on événement est déclenché, dans une fonction exécutée par un événement</p>
+<pre><code class="js">element.addEventListener('click', function(e) { // L'argument « e » va récupérer une référence vers l'objet « Event »
+    alert(e.type); // Ceci affiche le type de l'événement (click, mouseover, etc.)
+});
+</code></pre>
+
+<ul>
+<li>
+<p>la propriété <code>type</code> permet de savoir quel type d'événement s'est déclenché</p>
+</li>
+<li>
+<p>la propriété <code>target</code> permet de récupérer l'élément de l'événement actuellement déclenché, pour par exemple modifier le contenu d'un élément cliqué</p>
+</li>
+</ul>
+<pre><code class="html">&lt;span id=&quot;clickme&quot;&gt;Cliquez-moi !&lt;/span&gt;
+
+&lt;script&gt;
+    var clickme = document.getElementById('clickme');
+
+    clickme.addEventListener('click', function(e) {
+        e.target.innerHTML = 'Vous avez cliqué !';
+    });
+&lt;/script&gt;
+</code></pre>
+
+<ul>
+<li>
+<p>la propriété <code>currentTarget</code> permet de connaître l'élément à l'origine de l'événement, alors que <code>target</code> permet de connaître l'élément déclencheur qui peut être un élément enfant. Il s'utilise de la même manière que <code>target</code></p>
+</li>
+<li>
+<p>récupérer la position du curseur, généralement par raport au coin supérieur gauche de la page Web, ou aussi au coin supérieur gauche de l'écran. Il faut utiliser les propriétés <code>clientX</code> et <code>clientY</code> pour les positons horizontales et verticales. Souvent combiné avec l'événement <code>mousemove</code> car la position change à chaque déplacement de la souris</p>
+</li>
+</ul>
+<pre><code class="html">&lt;div id=&quot;position&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    var position = document.getElementById('position');
+
+    document.addEventListener('mousemove', function(e) {
+        position.innerHTML = 'Position X : ' + e.clientX + 'px&lt;br /&gt;Position Y : ' + e.clientY + 'px';
+    });
+&lt;/script&gt;
+</code></pre>
+
+<ul>
+<li>
+<p>la propriété <code>relatedTarget</code> permet de récupérer l'élément en relation avec un événement de souris. Elle ne s'utilise qu'avec les événements <code>mouseover</code> (objet de l'élément dont le curseur vient de sortir) et <code>mouseout</code> (objet de l'élément sur lequel le curseur vient d'entrer)</p>
+</li>
+<li>
+<p>récupérer les touches frappées par l'utilisateur, se fait par le biais de trois événements</p>
+</li>
+<li>les événements <code>keyup</code> et <code>keydown</code> servent à capter toutes les frappes des touches, ils retournent un caractère majuscule que la touche <code>Maj</code> soit pressée ou non</li>
+<li>l'événement <code>keypress</code> sert à capter les touches qui écrivent. En tapant Maj+A, <code>keypress</code> détectera nien un A majuscule</li>
+<li>
+<p>il existe trois propriétés capables de fournir une valeur : <code>keyCode</code>, <code>charCode</code> et <code>which</code>. <code>keyCode</code> est suffisante</p>
+</li>
+<li>
+<p>bloquer l'action par défaut de certains événements avec DOM-2, avec la méthode <code>preventDefault()</code></p>
+</li>
+</ul>
+<pre><code class="html">&lt;a id=&quot;link&quot; href=&quot;http://www.siteduzero.com&quot;&gt;Cliquez-moi !&lt;/a&gt;
+
+&lt;script&gt;
+    var link = document.getElementById('link');
+
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // On bloque l'action par défaut de cet événement
+        alert('Vous avez cliqué !');
+    });
+&lt;/script&gt;
+</code></pre>
+
+<hr />
+<h2 id="resoudre-les-problemes-dheritage-des-evenements">Résoudre les problèmes d'héritage des événements</h2>
+<p>Parfois, un événement appliqué sur un parent se propage à ses enfants. Cet héritage des événements peut provoquer des comportements inattendus. C'est le cas des événements <code>mouseover</code>, <code>mouseout</code>, <code>mousemove</code>, <code>click</code>... Pour régler cela, il faut utiliser la propriété <code>relatedTarget</code> pour détecter quel est l'élément vers lequel le curseur se dirige ou de quel élément il provient.</p>
+<h2 id="-_1">----</h2>
+<h1 id="les-formulaires">Les formulaires</h1>
+<hr />
+<h2 id="les-proprietes">Les propriétés</h2>
+<p>On va s'intéresser aux propriétés spécifiques aux éléments d'un formulaire : <code>value</code>, <code>disabled</code>, <code>checked</code>...</p>
+<h3 id="la-propriete-value">La propriété value</h3>
+<p>Elle permet de définir une valeur pour différents éléments d'un formulaire comme les <code>&lt;input&gt;</code> en lui assignant une valeur et elle est affichée sur l'élément HTML. Elle s'utilise aussi avec l'élément <code>&lt;textarea&gt;</code>. Pour ce dernier, on ne peut pas utiiser <code>innerHTML</code></p>
+<pre><code class="html">&lt;input id=&quot;text&quot; type=&quot;text&quot; size=&quot;60&quot; value=&quot;Vous n'avez pas le focus !&quot; /&gt;
+
+&lt;script&gt;
+    var text = document.getElementById('text');
+
+    text.addEventListener('focus', function(e) {
+        e.target.value = &quot;Vous avez le focus !&quot;;
+    });
+
+    text.addEventListener('blur', function(e) {
+        e.target.value = &quot;Vous n'avez pas le focus !&quot;;
+    });
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="les-booleens-avec-disabled-checked-et-readonly">Les booléens avec <code>disabled</code>, <code>checked</code> et <code>readonly</code></h3>
+<p>En HTML, ces 3 propriétés s'utilisent de la manière suivante : <code>&lt;input type="text" disabled="disabled" /&gt;</code>.<br />
+En JavaScript, ces propriétés sont des booléens.</p>
+<pre><code class="html">&lt;input id=&quot;text&quot; type=&quot;text&quot; /&gt;
+&lt;script&gt;
+    var text = document.getElementById('text');
+    text.disabled = true;
+&lt;/script&gt;
+</code></pre>
+
+<p>Pour les boutos de type radio, on peut utiliser la méthode <code>querySelectorAll()</code></p>
+<pre><code class="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;check&quot; value=&quot;1&quot; /&gt; Case n°1&lt;/label&gt;&lt;br /&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;check&quot; value=&quot;2&quot; /&gt; Case n°2&lt;/label&gt;&lt;br /&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;check&quot; value=&quot;3&quot; /&gt; Case n°3&lt;/label&gt;&lt;br /&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;check&quot; value=&quot;4&quot; /&gt; Case n°4&lt;/label&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;input type=&quot;button&quot; value=&quot;Afficher la case cochée&quot; onclick=&quot;check();&quot; /&gt;
+
+&lt;script&gt;
+function check() {
+    var inputs = document.querySelectorAll('input[type=radio]:checked'),
+        inputsLength = inputs.length;
+
+    for (var i = 0; i &lt; inputsLength; i++) {
+        alert('La case cochée est la n°' + inputs[i].value);
+    }
+}
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="les-listes-deroulantes-avec-selectedindex-et-options">Les listes déroulantes avec <code>selectedIndex</code> et <code>options</code></h3></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "search": 83, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

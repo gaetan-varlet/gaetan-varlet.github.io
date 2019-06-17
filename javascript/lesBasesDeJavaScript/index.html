@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Les bases de JavaScript - Gaëtan Varlet</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Gaëtan Varlet</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Sommaire</a>
+                            </li>
+                            <li >
+                                <a href="../../tutoriel-linux/">Linux</a>
+                            </li>
+                            <li >
+                                <a href="../../html-css/">HTML/CSS</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Javascript <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../">Sommaire</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Les bases de JavaScript</a>
+</li>
+                                    
+<li >
+    <a href="../vraimentBienComprendreJavaScript/">Vraiment bien comprendre JavaScript</a>
+</li>
+                                    
+<li >
+    <a href="../developpementModerneJavascript/">Développement moderne Javascript et ES6, ES7</a>
+</li>
+                                    
+<li >
+    <a href="../objetsEtFonctionsUtilesJavascript/">Objets et fonctions utiles Javascript</a>
+</li>
+                                    
+<li >
+    <a href="../javascriptDebarqueDansLeNavigateur/">Javascript débarque dans le navigateur</a>
+</li>
+                                    
+<li >
+    <a href="../frameworksJavascript/">Les bibliothèques et frameworks JavaScript (TODO)</a>
+</li>
+                                    
+<li >
+    <a href="../modelerVosPagesWeb/">Modeler vos pages web (RECUP DES CHOSES PUIS SUPPRIMER)</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../vraimentBienComprendreJavaScript/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#les-bases-de-javascript">Les bases de JavaScript</a></li>
+            <li><a href="#-">----</a></li>
+        <li class="main "><a href="#introduction">Introduction</a></li>
+            <li><a href="#quest-que-le-javascript">Qu’est que le JavaScript ?</a></li>
+            <li><a href="#petit-historique-du-langage">Petit historique du langage</a></li>
+            <li><a href="#-_1">----</a></li>
+        <li class="main "><a href="#deboguer-votre-code-grace-a-la-console">Déboguer votre code grâce à la console</a></li>
+            <li><a href="#en-quoi-consiste-le-debogage">En quoi consiste le débogage ?</a></li>
+            <li><a href="#les-kits-de-developpement-et-leur-console">Les kits de développement et leur console</a></li>
+            <li><a href="#aller-plus-loin-avec-la-console">Aller plus loin avec la console</a></li>
+            <li><a href="#utiliser-les-points-darret">Utiliser les points d’arrêt</a></li>
+            <li><a href="#-_2">----</a></li>
+        <li class="main "><a href="#premiers-pas">Premiers pas</a></li>
+            <li><a href="#afficher-une-boite-de-dialogue">Afficher une boîte de dialogue</a></li>
+            <li><a href="#la-syntaxe-du-javascript">La syntaxe du JavaScript</a></li>
+            <li><a href="#quelques-aides">Quelques aides</a></li>
+            <li><a href="#ou-placer-le-code-dans-la-page">Où placer le code dans la page ?</a></li>
+            <li><a href="#-_3">----</a></li>
+        <li class="main "><a href="#les-variables">Les variables</a></li>
+            <li><a href="#quest-ce-quune-variable">Qu’est ce qu’une variable</a></li>
+            <li><a href="#les-operateurs-arithmetiques">Les opérateurs arithmétiques</a></li>
+            <li><a href="#initiation-a-la-concatenation-et-a-la-conversion-des-types">Initiation à la concaténation et à la conversion des types</a></li>
+            <li><a href="#-_4">----</a></li>
+        <li class="main "><a href="#les-conditions">Les conditions</a></li>
+            <li><a href="#la-base-de-toute-condition-les-booleens">La base de toute condition : les booléens</a></li>
+            <li><a href="#la-condition-if">La condition if</a></li>
+            <li><a href="#la-condition-switch">La condition “switch”</a></li>
+            <li><a href="#loperateur-ternaire">L'opérateur Ternaire</a></li>
+            <li><a href="#les-conditions-sur-les-variables">Les conditions sur les variables</a></li>
+            <li><a href="#-_5">----</a></li>
+        <li class="main "><a href="#les-boucles">Les boucles</a></li>
+            <li><a href="#la-boucle-while">La boucle while</a></li>
+            <li><a href="#la-boucle-do-while">La boucle do while</a></li>
+            <li><a href="#la-boucle-for">La boucle for</a></li>
+            <li><a href="#-_6">----</a></li>
+        <li class="main "><a href="#les-fonctions">Les fonctions</a></li>
+            <li><a href="#concevoir-des-fonctions">Concevoir des fonctions</a></li>
+            <li><a href="#la-portee-des-variables">La portée des variables</a></li>
+            <li><a href="#les-arguments-et-les-valeurs-de-retour">Les arguments et les valeurs de retour</a></li>
+            <li><a href="#les-fonctions-anonymes">Les fonctions anonymes</a></li>
+            <li><a href="#-_7">----</a></li>
+        <li class="main "><a href="#les-objets-et-les-tableaux">Les objets et les tableaux</a></li>
+            <li><a href="#introduction-aux-objets">Introduction aux objets</a></li>
+            <li><a href="#les-tableaux">Les tableaux</a></li>
+            <li><a href="#les-objets-litteraux">Les objets littéraux</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="les-bases-de-javascript">Les bases de JavaScript</h1>
+<h2 id="-">----</h2>
+<h1 id="introduction">Introduction</h1>
+<hr />
+<h2 id="quest-que-le-javascript">Qu’est que le JavaScript ?</h2>
+<p>Le JavaScript est un langage de programmation de scripts orienté objet</p>
+<p>Un langage de programmation permet d’écrire du code source qui sera analysé par l’ordinateur. Il existe  trois manières d’utiliser du code source :
+- <strong>langage compilé :</strong> le code source est donné à un programme appelé compilateur qui va lire le code source et le convertir dans un langage que l’ordinateur sera capable d’interpréter : le langage binaire. Les langages comme le C ou le C++ sont des langages dits compilés
+- <strong>langage précompilé :</strong> le code source est partiellement compilé, dans un langage plus simple à lire par l’ordinateur mais ce n’est pas encore du binaire. Ce code intermédiaire devra être lu par une machine virtuelle qui exécutera ce code. Les langages comme Java ou C# sont dits précompilés
+- <strong>langage interprété :</strong> pas de compilation, le code source reste tel quel. Pour exécuter le code, on doit le fournir à un interpréteur qui lira le code et réalisera les actions. Pour obtenir des gains de performances, on peut le le compiler à la volée pendant son exécution, ce que font aujourd’hui la plupart des interpréteurs JavaScript</p>
+<p>Les scripts sont majoritairement interprétés, ce qui est le cas de JavaScript qui est un langage interprété. Il y a un interpréteur JavaScript dans le navigateur Web, qui est différent selon le navigateur : Chakra dans Internet Explorer, SpiderMonkey dans Firefox, V8 dans Chrome.</p>
+<p>Le JavaScript est majoritairement utilisé sur les pages Web pour dynamiser les pages HTML, en ajoutant des interactions avec l’utilisateur, des animations, de l’aide à la navigation, par exemple : afficher ou masquer du texte, faire défiler des images, créer des infobulles…</p>
+<p>Les scripts JavaScript sont exécutés par le navigateur chez l’internaute (le client), contrairement aux langages serveur (comme le PHP) exécuté par le serveur web.
+Un script serveur va s’occuper de créer la page Web qui sera envoyé au navigateur. Ce dernier va alors afficher la page puis exécuter les scripts client tel que le JavaScript.</p>
+<p>Le JavaScript ne sert pas que dans les pages Web. Il sert aussi à réaliser des extensions pour des programmes. Chrome et Firefox en possèdent tous deux un panel gigantesque en partie codées en JavaSript.
+Il est aussi possible d’exécuter du JavaScript en dehors du navigateur.
+Le JavaScript peut aussi être utilisé pour réaliser des applications.</p>
+<hr />
+<h2 id="petit-historique-du-langage">Petit historique du langage</h2>
+<p>En 1995, Brendan Eich développe le LiveScript qui sera renommé en JavaScript en hommage au langage Java. Netscape décide d’envoyer sa version de JavaScript à l’ECMA international pour que le langage soit standardisé. L’ECMA standardise le langage soit le nom d’ECMAScript. L’ECMAScript est la référence de base, de là en découle des implémentations comme le JavaScript.</p>
+<p>Les versions du JavaScript sont basées sur celles de l’ECMAScript. Ainsi il existe :
+- ES1 et ES2 qui sont les prémices du langage JavaScript
+- ES3 sorti en décembre 1999
+- ES4 qui a été abandonné en raison de modifications trop importantes qui ne furent pas appréciées
+- ES5 sortie en décembre 2009, la version la plus répandue et la plus utilisée à ce jour
+- ES6, finalisé en décembre 2014</p>
+<h2 id="-_1">----</h2>
+<h1 id="deboguer-votre-code-grace-a-la-console">Déboguer votre code grâce à la console</h1>
+<p>Nous allons commencer à étudier les différents bugs que l’on va généralement rencontrer en JavaScript et surtout comment les résoudre, en utilisant les kits de développement fournis avec n’importe quel navigateur digne de ce nom.</p>
+<hr />
+<h2 id="en-quoi-consiste-le-debogage">En quoi consiste le débogage ?</h2>
+<h3 id="les-bugs">Les bugs</h3>
+<p>Ce sont des erreurs humaines laissées dans le code. Il existe deux types principaux de bugs :
+- ceux que l’interpréteur JavaScript saura signaler : fautes de syntaxe</p>
+<pre><code>va myVar = 'test; // Le mot-clé « var » est mal orthographié et il manque une apostrophe
+</code></pre>
+
+<ul>
+<li>ceux que l’interpréteur ne verra pas : erreurs dans l’algorithme</li>
+</ul>
+<pre><code class="js">// On veut afficher la valeur 6 avec les nombres 3 et 2
+var myVar = 3 + 2;
+// Mais on obtient 5 au lieu de 6 car on a fait une addition au lieu d'une multiplication
+</code></pre>
+
+<p>Une erreur syntaxique empêche le code de s’exécuter tandis que les erreurs d’algorithme ne pose aucun problème d’exécution.</p>
+<h3 id="le-debogage">Le débogage</h3>
+<p>Cette technique consiste à supprimer les bugs qui existent dans le code.
+Les bugs syntaxiques sont les plus simples à résoudre car l’interpréteur JavaScript signale généralement l’endroit où l’erreur est apparue.<br />
+En ce qui concerne les bugs algorithmiques, il va falloir chercher nous-même. Le plus simple est souvent de remonter les couches de code pour trouver où l’erreur s’est produite.</p>
+<hr />
+<h2 id="les-kits-de-developpement-et-leur-console">Les kits de développement et leur console</h2>
+<p>Tous les navigateurs récent possède un kit de développement : Chrome, Firefox, IE, Safari, Opéra… Ces kits permettent de déboguer efficacement nos codes : détection des erreurs syntaxiques, afficher des valeurs dans la console, consulter le code HTML généré par le code, analyser les requêtes HTTP effectuées par le navigateur, mesurer les performances du code, etc…
+Les fonctionnalités des différents kits sont souvent identiques, mais il y a parfois quelques différences. Nous verrons surtout celui de Chrome.</p>
+<p>Pour ouvrir le kit de développement, il faut appuyer sur <strong>F12</strong>.</p>
+<p>Dans le cadre du débogage d’erreurs, il est très important de bien externaliser le code JavaScript car l’affichage des erreurs peut être erroné avec Chrome lorsque le code JS est directement intégré au sein du code HTML.</p>
+<p>Consulter la console pour voir les erreurs. On peut par exemple voir SyntaxError qui mentionne une erreur syntaxique. A droite du texte, on voit le nom du fichier concerné ainsi que la ligne de code, qu’il est possible de consulter en cliquant dessus.
+L’interpréteur JavaScript s’arrête sur la première erreur rencontrée, même s’il y a plusieurs erreurs. En corrigeant la première erreur, le navigateur affichera alors l’erreur suivante.</p>
+<p>La console permet aussi de repérer des erreurs qui ne sont pas forcément liées au JavaScript, telles que des images manquantes par exemple. En cas de page web non conforme à ce qu’on attend, il faut toujours consulter la console ce qui permet généralement de trouver la source du problème.</p>
+<hr />
+<h2 id="aller-plus-loin-avec-la-console">Aller plus loin avec la console</h2>
+<p>La console est un outil qui permet de faire plus que simplement lister les erreurs sur la page.
+La méthode <code>console.log()</code> permet d’afficher la valeur d’une variable sans bloquer l’exécution du code contrairement à la fonction <code>alert()</code>.</p>
+<pre><code class="js">// on affiche un tableau.
+var helloArray = ['Hello', 'Bonjour', 'Hola'];
+console.log(helloArray);
+</code></pre>
+
+<p>La méthode console.log() permet d’afficher le contenu de l’objet. Elle est utilisable sur tous les types de variables et pourra rendre service de nombreuses fois.
+En plus de la méthode log(), l’objet console  en propose d’autres qui permettent de modifier la manière d’afficher les valeurs : émettre des alertes ou des erreurs avec les méthodes <code>warn()</code> et <code>error()</code>, grouper des lignes de résultats avec <code>group()</code> et <code>groupEnd()</code>.
+Ces méthodes sont faites pour déboguer le code et n’ont rien à faire dans le code une fois le site mis en ligne.</p>
+<p>Dans la console, il y a une ligne en bas avec un chevron bleu où il est possible d’écrire directement du code qui agit pendant son exécution ! Cependant, cela fonctionne uniquement sur les variables globales.</p>
+<hr />
+<h2 id="utiliser-les-points-darret">Utiliser les points d’arrêt</h2>
+<p>Pour identifier un bug qui se produit pendant une fraction de seconde, il est possible d’utiliser un point d’arrêt, aussi appelé breakpoint en anglais.
+Grâce aux points d’arrêt, nous allons pouvoir étudier la pile d’exécution de notre code, dans l’onglet “Sources” dans le kit de développement et choisir un fichier parmi ceux de la page web.
+Dans le fichier JS, il suffit de cliquer sur un numéro de ligne pour mettre un point d’arrêt. Celui-ci indique au navigateur qu’on souhaite <strong>mettre en pause le code avant l’exécution de la ligne concernée</strong>. Ils ne peuvent être placé que <strong>sur des lignes comportant des instructions</strong>, c’est impossible sur une ligne de déclaration de fonction par exemple. Il faut recharger la page pour prendre en compte le point d’arrêt. Le code sera surligné à l’endroit où il s’est arrêté. On peut consulter les variables actuellement utilisées au sein du scope actuel (dans le menu “Local”) ainsi que les variables globales (menu “Global”).</p>
+<p><strong>La pile d’exécution</strong>
+Pour chaque point d’arrêt, on peut consulter la pile d’exécution (<strong>call stack</strong>) qui définit par quelles fonctions le code est passé afin d’atteindre la ligne actuellement mise en pause par le point d’arrêt. On peut cliquer sur chaque étape de la pile et consulter les variables du scope. La pile permet aussi de savoir par quoi a été déclenché une partie du code.
+Enfin il est possible de donner un nom à une fonction anonyme dans la pile d’exécution afin de mieux la repérer.</p>
+<h2 id="-_2">----</h2>
+<h1 id="premiers-pas">Premiers pas</h1>
+<p>L’objectif ici est d’apprendre à intégrer le JavaScript aux pages Web.</p>
+<hr />
+<h2 id="afficher-une-boite-de-dialogue">Afficher une boîte de dialogue</h2>
+<p>Dans les balises <code>&lt;body&gt;</code> du HTML, écrire</p>
+<pre><code class="javascript">&lt;script&gt;
+alert('Hello world!')
+&lt;/script&gt;
+</code></pre>
+
+<p>Une boîte de dialogue s'affiche avec le message Hello world!</p>
+<p>Dans cet exemple, il n’y a qu’une instruction : l’appel de la fonction <code>alert()</code>. C’est une instruction simple, appelée fonction, qui permet d’afficher une boîte de dialogue contenant un message. Une boîte de dialogue s'affiche avec le message <em>Hello world!</em>  </p>
+<hr />
+<h2 id="la-syntaxe-du-javascript">La syntaxe du JavaScript</h2>
+<h3 id="les-instructions">Les instructions</h3>
+<p>Les instructions doivent être séparées par un point-virgule, non obligatoire si l’instruction qui suit se trouve sur la ligne suivante.</p>
+<pre><code class="js">instruction_1
+instruction_2;
+instruction_3; instruction_4
+</code></pre>
+
+<h3 id="les-espaces">Les espaces</h3>
+<p>Le JavaScript n’est pas sensible aux espaces, on peut donc indenter comme on le souhaite les instructions.</p>
+<h3 id="les-commentaires">Les commentaires</h3>
+<p>Il existe des commentaires de fin de ligne et des commentaires multilignes.</p>
+<pre><code class="js">instruction_1 // Ceci est ma première instruction
+instruction_2
+// La troisième instruction ci-dessous :
+instruction_3
+
+/* Ce script comporte 3 instructions :
+      - Instruction 1 qui fait telle chose
+      - Instruction 2 qui fait autre chose
+      - Instruction 3 qui termine le script
+*/
+instruction_1
+instruction_2
+instruction_3 // Fin du script
+</code></pre>
+
+<hr />
+<h2 id="quelques-aides">Quelques aides</h2>
+<p>Un site de documentation :
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference</p>
+<p>Un site pour tester le code JavaScript en ligne :
+https://jsfiddle.net/</p>
+<hr />
+<h2 id="ou-placer-le-code-dans-la-page">Où placer le code dans la page ?</h2>
+<p>Les codes JavaScript sont insérés au moyen de l’élément <code>&lt;script&gt;</code>. Cet élément possède un attribut <strong>type</strong> qui sert à indiquer le type de langage que l’on va utiliser. dans notre cas, il s’agit du JavaScript, mais ça pourrait être autre chose, comme du VBScript.
+En HTML4 et XHTML 1.x, l’attribut type est obligatoire. En revanche, en HTML5, il ne l’est pas. L’attribut type prend comme valeur text/javascript, qui est en fait le type MIME d’un code JavaScript.</p>
+<h3 id="le-javascript-dans-la-page">Le JavaScript dans la page</h3>
+<p>Rien de plus simple, on place le code au sein de l’élément <code>&lt;script&gt;</code> dans le <code>&lt;body&gt;</code> du HTML.</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Hello World!&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;script&gt;
+        alert('Hello world!');
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>En HTML4 ou en XHTML 1.x, il faut utiliser des <strong>commentaires d’encadrement</strong> pour que la page soit conforme à ces normes. C’est inutile en HTML5. Ces commentaires servent à isoler le code JavaScript pour ne pas qu’il soit interprété par le validateur du W3C. Cela évite d’avoir des erreurs dans la page en empêchant par exemple l’interprétation des chevrons &lt; et &gt; comme des balises HTML.</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;script&gt;
+    &lt;!--
+
+        valeur_1 &gt; valeur_2;
+
+    //--&gt;
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h3 id="le-javascript-en-externe">Le JavaScript en externe</h3>
+<p>Il est conseillé d’écrire le code JavaScript dans un fichier externe portant l’extension <strong>.js</strong>. Ce fichier est ensuite appelé depuis la page Web au moyen de l’élément script et de son attribut <strong>src</strong> qui contient l’URL du fichier.
+Voici un exemple avec un fichier hello.js qui se situe dans le même répertoire de la page Web.</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test JavaScript&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+<p>Il vaut mieux privilégier un fichier externe plutôt que d’inclure le code directement dans la page, car le fichier externe est mis en cache par le navigateur et n’est donc pas rechargé à chaque chargement de la page, ce qui accélère l’affichage de la page.
+Une page Web est lue par le navigateur de façon linéaire, c’est à dire d’abord l’élément <code>&lt;head&gt;</code> puis les éléments <code>&lt;body&gt;</code> les uns à la suite des autres. Si on appelle un fichier JavaScript dès le début du chargement de la page, le navigateur va donc charger ce fichier et si ce dernier est volumineux, le chargement de la page s’en trouvera ralenti car le navigateur va charger le fichier avant de commencer à afficher le contenu de la page.
+Pour pallier ce problème, il est conseillé de placer les éléments <code>&lt;script&gt;</code> juste avant la fermeture de l’élément <code>&lt;body&gt;</code>.</p>
+<h2 id="-_3">----</h2>
+<h1 id="les-variables">Les variables</h1>
+<hr />
+<h2 id="quest-ce-quune-variable">Qu’est ce qu’une variable</h2>
+<p>Une variable est un espace de stockage.
+Il faut commencer par la déclarer, c’est à dire lui réserver un espace de stockage. Le mot clé var est présent pour indiquer qu’on déclare une variable.</p>
+<pre><code class="js">var myVariable;
+</code></pre>
+
+<p>JavaScript est <strong>sensible à la casse</strong>, il faut faire attention aux majuscules et minuscules.<br />
+JavaScript est un langage <strong>typé dynamiquement</strong>, cela veut dire que la déclaration de variable se fait avec le mot clé <strong>var</strong> sans distinction du contenu.<br />
+Les trois types principaux en JavaScript
+- le type numérique (<strong>number</strong>) pour les nombres entiers ou décimaux
+- les chaînes de caractères (<strong>string</strong>) : on peut l’assigner avec des guillemets (") ou des apostrophes ('). Pour échapper les apostrophes, il faut utiliser \
+- les booléens (<strong>boolean</strong>) : prennent soit la valeur true ou false</p>
+<p>L’instruction <strong>typeof</strong> permet de tester l’existence d’une variable ou d’en vérifier son type.</p>
+<pre><code class="js">var myNumber = 2
+var maString = &quot;toto&quot;
+var monBool = true
+console.log(typeof myNumber) // Affiche : « number »
+console.log(typeof maString) // Affiche : « string »
+console.log(typeof monBool) // Affiche : « boolean »
+console.log(typeof nothing) // Affiche : « undefined »
+</code></pre>
+
+<p>Si l’instruction typeof renvoie undefined, c’est que soit votre variable est inexistante, soit qu’elle est déclarée mais ne contient rien.</p>
+<hr />
+<h2 id="les-operateurs-arithmetiques">Les opérateurs arithmétiques</h2>
+<p>L’addition <code>+</code>, la soustraction <code>-</code>, la multiplication <code>*</code>, la division <code>/</code> et le modulo <code>%</code> qui est le reste d’une division.
+L'incrémentation permet d’ajouter une unité à un nombre au moyen d’une syntaxe court. A l’inverse, la décrémentation permet de soustraire une unité.</p>
+<pre><code class="js">var a = 5
+// la valeur est affichée puis incrémentée
+console.log(a++) // 5
+console.log(a) // 6
+
+var b = 5
+// la valeur est incrémentée puis affichée
+console.log(++b) // 6
+console.log(b) // 6
+
+var  c = 1
+c += 2
+console.log(c) // 3
+c *= 4
+console.log(c) // 12
+c /= 2
+console.log(c) // 6
+</code></pre>
+
+<hr />
+<h2 id="initiation-a-la-concatenation-et-a-la-conversion-des-types">Initiation à la concaténation et à la conversion des types</h2>
+<h3 id="la-concatenation">La concaténation</h3>
+<p>L’opérateur + permet de faire des concaténations.</p>
+<pre><code class="js">var hi = 'Bonjour ', name = 'toi', result
+result = hi + name
+console.log(result) // Affiche : « Bonjour toi »
+</code></pre>
+
+<h3 id="interagir-avec-lutilisateur">Interagir avec l’utilisateur</h3>
+<p>La fonction <code>prompt()</code> renvoi ce que l’utilisateur a écrit dans une boîte de dialogue sous forme d’une chaîne de caractères, que l’on peut donc récupérer dans une variable.</p>
+<pre><code class="js">var text = prompt('Tapez quelque chose :')
+</code></pre>
+
+<h3 id="convertir-une-chaine-de-caracteres-en-nombre">Convertir une chaîne de caractères en nombre</h3>
+<p>Si on essaie de faire l’addition de deux chiffres saisis par l’utilisateur, ils vont être concaténé (par exemple 3 + 6 va donner 36 et non pas 9) car ils sont considérés comme une chaîne de caractères. Il faut donc convertir les variables en nombre avec la fonction <code>parseInt()</code> pour les nombres entiers et <code>parseFloat()</code> pour les nombres décimaux. Si on utilise <code>parseInt()</code> sur un nombre décimal, il sera tronqué.</p>
+<pre><code class="js">var text = '1337', number
+number = parseInt(text)
+
+var text = '1337.54', number
+number = parseFloat(text)
+</code></pre>
+
+<h3 id="convertir-un-nombre-en-chaine-de-caracteres">Convertir un nombre en chaîne de caractères</h3>
+<p>L’ajout d’une chaîne de caractère vide entre les deux nombres les convertis en caractères.</p>
+<pre><code class="js">var text, number1 = 4, number2 = 2
+text = number1 + '' + number2
+console.log(text) // Affiche : « 42 »
+</code></pre>
+
+<p>Une façon de faire plus propre est d'utiliser la méthode <code>toString()</code></p>
+<pre><code class="js">var number=1337.65
+var text = number.toString()
+console.log(number) // 1337.65
+console.log(typeof number) // number
+console.log(text) // 1337.65
+console.log(typeof text) // string
+</code></pre>
+
+<h2 id="-_4">----</h2>
+<h1 id="les-conditions">Les conditions</h1>
+<hr />
+<h2 id="la-base-de-toute-condition-les-booleens">La base de toute condition : les booléens</h2>
+<p>Les opérateurs de comparaison :
+- <code>==</code> égal à
+- <code>!=</code> différent de
+- <code>===</code> contenu et type égal à
+- <code>!==</code> contenu ou type différent de
+- <code>&gt;</code> supérieur à
+- <code>&gt;=</code> supérieur ou égal à
+- <code>&lt;</code> inférieur à
+- <code>&lt;=</code> inférieur ou égal à</p>
+<pre><code class="js">var number1 = 2, number2 = &quot;2&quot;
+console.log(number1 == number2) // true
+console.log(number1 === number2) // false
+</code></pre>
+
+<p>Les opérateurs logiques
+- <code>&amp;&amp;</code> ET <code>valeur1&amp;&amp;valeur2</code>
+- <code>||</code> OU <code>valeur1||valeur2</code>
+- <code>!</code> NON <code>!valeur</code></p>
+<p>L’opérateur ET vérifie que toutes les valeurs qui lui sont passées valent true. Si une seule renvoie false, alors la condition ne sera pas respectée.<br />
+L’opérateur OU renvoie true si une des valeurs qui lui est soumise contient true.<br />
+L’opérateur NON inverse la valeur qui lui est passée, ainsi true devient false.</p>
+<pre><code class="js">var result = true &amp;&amp; true
+console.log(result) // Affiche : « true »
+
+result = true &amp;&amp; false
+console.log(result) // Affiche : « false »
+
+var result = false
+result = !result // On stocke dans « result » l'inverse de « result »
+console.log(result) // Affiche « true » car on voulait l'inverse de « false »
+</code></pre>
+
+<hr />
+<h2 id="la-condition-if">La condition if</h2>
+<pre><code class="js">if (2 &lt; 8 &amp;&amp; 8 &gt;= 4) { // Cette condition renvoie « true », le code est donc exécuté
+    console.log('La condition est bien vérifiée.')
+}
+
+if (2 &gt; 8 || 8 &lt;= 4) { // Cette condition renvoie « false », le code n'est donc pas exécuté
+    console.log(&quot;La condition n'est pas vérifiée mais vous ne le saurez pas vu que ce code ne s'exécute pas.&quot;)
+}
+</code></pre>
+
+<h3 id="la-fonction-confirm">La fonction confirm()</h3>
+<p>On lui passe en paramètre une chaîne de caractères qui sera affichée à l’écran et elle retourne un booléen en fonction de l’action de l’utilisateur sur la boîte de dialogue (OK ou Annuler).</p>
+<pre><code class="js">if (confirm('Voulez-vous exécuter le code JavaScript de cette page ?')) {
+    console.log('Le code a bien été exécuté !')
+}
+</code></pre>
+
+<p>Le code s’exécute si on clique sur OK et ne s’exécute pas si on clique sur Annuler.</p>
+<h3 id="la-structure-if-else-if-else-pour-dire-sinon-si-sinon">La structure if, else if, else pour dire sinon si, sinon</h3>
+<p>Une première condition est testée, une deuxième sera testée si la première échoue, et si aucune condition ne se vérifie, la structure else fait alors son travail.</p>
+<pre><code class="js">if(/* condition */){
+    // Du code...
+}else if(/* condition */){
+    // Du code...
+}else{
+    // Du code...
+}
+</code></pre>
+
+<hr />
+<h2 id="la-condition-switch">La condition “switch”</h2>
+<p>Très pratique pour faire du cas par cas, il n’est pas nécessaire de réécrire la condition à chaque fois.</p>
+<pre><code class="js">var drawer = parseInt(prompt('Choisissez le tiroir à ouvrir (1 à 3) :'));
+
+switch (drawer) {
+    case 1:
+         console.log('Contient divers outils pour dessiner : du papier, des crayons, etc.')
+        break
+
+    case 2:
+         console.log('Contient du matériel informatique : des câbles, des composants, etc.')
+        break
+
+    default:
+         console.log(&quot;Info du jour : le meuble ne contient que 4 tiroirs et, jusqu'à preuve du contraire, les tiroirs négatifs n'existent pas.&quot;)
+}
+</code></pre>
+
+<p>On écrit <strong>break</strong> à la fin de chaque case pour casser le switch et éviter d’exécuter le reste du code. L’oubli du break fait exécuter tout le code à partir du case choisi.
+<strong>Default</strong> sera exécuté si aucun des cas précédents n’a été exécuté, partie optionnelle.</p>
+<hr />
+<h2 id="loperateur-ternaire">L'opérateur Ternaire</h2>
+<p>C'est une syntaxe simplifiée pour faire un <code>if else</code> mais un peu moins lisible : <code>condition ? valeurSiTrue : valeurSiFalse</code></p>
+<p>Exemple :</p>
+<pre><code class="js">var gaetan = &quot;Gaëtan&quot;
+var louis = &quot;Louis&quot;
+var nomLePlusLong
+
+if(gaetan.length &gt; louis.length){
+    nomLePlusLong = gaetan
+} else {
+    nomLePlusLong = louis
+}
+console.log(nomLePlusLong) // affiche Gaëtan
+
+var nomLePlusLong2 = gaetan.length &gt; louis.length ? gaetan : louis
+console.log(nomLePlusLong2) // affiche Gaëtan
+</code></pre>
+
+<hr />
+<h2 id="les-conditions-sur-les-variables">Les conditions sur les variables</h2>
+<p><strong>Tester l’existence du contenu d’une variable</strong></p>
+<pre><code class="js">var conditionTest = 'Fonctionnera ? Fonctionnera pas ?'
+
+if (conditionTest) {
+    console.log('Fonctionne !')
+} else {
+    console.log('Ne fonctionne pas !')
+}
+</code></pre>
+
+<p>Le code affiche le texte “Fonctionne” car la variable conditionTest a été convertie en booléen et son contenu a été évalué comme true. Pour qu’il soit évalué comme false, il faut que que ce soit un nombre égal à 0 ou une chaîne de caractères vide. La valeur undefined renvoie aussi false.</p>
+<p><strong>Le cas de l’opérateur OU</strong></p>
+<pre><code class="js">var conditionTest1 = '', conditionTest2 = 'Une chaîne de caractères'
+console.log(conditionTest1 || conditionTest2)
+</code></pre>
+
+<p>L’opérateur OU en plus de sa fonction principale, permet de renvoyer la première valeur évaluée à true. Dans cet exemple, elle renvoie donc <em>Une chaîne de caractères</em>.</p>
+<h2 id="-_5">----</h2>
+<h1 id="les-boucles">Les boucles</h1>
+<hr />
+<h2 id="la-boucle-while">La boucle while</h2>
+<p>C’est un répétition d’instruction jusqu’à ce qu’on dise à la boucle de s’arrêter. A chaque répétition, on parle d’itération. Tant que la condition est vraie, la boucle se répète.</p>
+<pre><code class="js">while (condition) {
+    instruction_1
+    instruction_2
+}
+</code></pre>
+
+<p>Il est possible d’arrêter la boucle avec le mot clé <strong>break</strong>. Il est possible de mettre fin à une itération et faire continuer la boucle avec <strong>continue</strong>.</p>
+<hr />
+<h2 id="la-boucle-do-while">La boucle do while</h2>
+<p>Elle ressemble à la boucle while sauf qu’elle est toujours exécutée au moins une fois. Dans le cas d’une boucle while, si la condition n’est pas valide, la boucle n’est pas exécutée. Avec do while, la boucle est exécutée une première fois, puis la condition est testée pour savoir si la boucle doit continuer.</p>
+<pre><code class="js">do {
+    instruction_1
+    instruction_2
+} while (condition)
+</code></pre>
+
+<p>Utilisation très peu fréquente car il est possible d’utiliser une boucle while normale avec une condition qui fait que celle-ci est toujours exécutée une fois.</p>
+<hr />
+<h2 id="la-boucle-for">La boucle for</h2>
+<p>Ressemble dans son fonctionnement à la boucle while</p>
+<pre><code class="js">for (initialisation; condition; incrémentation) {
+    instruction_1
+    instruction_2
+}
+</code></pre>
+
+<p>L’incrémentation a lieu à la fin de chaque itération. Le premier tour de boucle dans l’exemple ci-dessous est donc fait avec iter=0.</p>
+<pre><code class="js">for (var iter = 0; iter &lt; 5; iter++) {
+    console.log('Itération n°' + iter) // affiche 0 puis 1, 2, 3 et 4
+}
+console.log(iter) // affiche 5
+</code></pre>
+
+<p><strong>Portée des variables de boucle</strong>
+En JavaScript, il est déconseillé de déclarer des variables au sein d’une boucle car il n’est pas nécessaire de déclarer une variable à chaque passage dans la boucle.
+Il est conseillé de les déclarer dans le bloc d’initialisation, mais attention une fois la boucle exécutée, la variable existe toujours. Ce comportement est différent de celui de nombreux autres langages dans lesquels une variable déclarée dans une boucle est détruite une fois la boucle exécutée.</p>
+<p><strong>Priorité d’exécution</strong>
+Les trois blocs de la boucle for ne sont pas exécutés en même temps :
+- <em>initialisation :</em> juste avant que la boucle ne démarre
+- <em>condition :</em> avant chaque passage de boucle
+- <em>incrémentation :</em> après chaque passage de boucle. Cela veut dire que si on fait un break dans une boucle for, le passage dans la boucle lors du break ne sera pas comptabilisé.</p>
+<p>La boucle <code>for</code> est très utilisée en JavaScript, bien plus que la boucle <code>while</code>. Le fonctionnement de JavaScript fait que la boucle <code>for</code> est nécessaire dans la majorité des cas comme la manipulation des tableaux ainsi que des objets. Nous verrons aussi une variante de la boucle <code>for</code>, appelée <code>for in</code>.</p>
+<h2 id="-_6">----</h2>
+<h1 id="les-fonctions">Les fonctions</h1>
+<hr />
+<h2 id="concevoir-des-fonctions">Concevoir des fonctions</h2>
+<pre><code class="js">// déclaration d'une fonction
+function myFunction(arguments) {
+    // Le code que la fonction va devoir exécuter
+}
+
+myFunction() // exécution de la fonction
+</code></pre>
+
+<p>L’utilité basique des fonctions est d’éviter la répétition de code. Le code écrit dans une fonction ne s'exécute pas immédiatement, sinon l'intérêt serait nul. Pour cela il faut appeler la fonction afin de l'exécuter.</p>
+<hr />
+<h2 id="la-portee-des-variables">La portée des variables</h2>
+<p>Toute variable déclarée dans une fonction n’est utilisable que dans cette même fonction, appelée <strong>variable locale</strong>. Lorsqu’une variable n’est accessible que dans une partie du code, on dit qu’elle se trouve au sein d’un “scope”.</p>
+<p>Les variables déclarées en-dehors des fonctions sont appelées <strong>variables globales</strong>, car elles sont accessibles partout dans le code, y compris dans les fonctions.</p>
+<p>Si on crée une variable locale avec le même nom qu’une variable globale, la variable locale prend le dessus le temps de l’exécution de la fonction.</p>
+<p>Par principe, il faut déclarer les variables qui ne servent que dans une fonction à l’intérieur de celle-ci et non pas de manière globale.</p>
+<hr />
+<h2 id="les-arguments-et-les-valeurs-de-retour">Les arguments et les valeurs de retour</h2>
+<pre><code class="js">function myFunction(arg) {
+    console.log('Votre argument : ' + arg)
+}
+
+function moar(first, second) {
+    // On peut maintenant utiliser les variables « first » et « second » comme on le souhaite :
+    console.log('Votre premier argument : ' + first)
+    console.log('Votre deuxième argument : ' + second)
+}
+</code></pre>
+
+<p>Les arguments sont propres à leur fonction, ils ne seront accessibles que dans cette fonction et nulle part ailleurs.</p>
+<p><strong>Les valeurs de retour</strong>
+Chaque fonction ne peut retourner qu’une seule et unique valeur. Il est possible de contourner le problème en renvoyant un tableau ou un objet. L’instruction return met fin à la fonction puis retourne la valeur.</p>
+<pre><code class="js">function sayHello() {
+    return 'Bonjour !'
+}
+console.log(sayHello()) // on affiche la valeur retournée par la fonction sayHello()
+</code></pre>
+
+<hr />
+<h2 id="les-fonctions-anonymes">Les fonctions anonymes</h2>
+<p>Elles sont extrêmement importantes en JavaScript. Elles servent pour les objets, les événements, les variables statiques, les closures…
+Elles n’ont pas de nom ! C’est la seule différence avec une fonction traditionnelle.</p>
+<pre><code class="js">function (arguments) {
+    // Le code de votre fonction anonyme
+}
+</code></pre>
+
+<p>Pour l’appeler, il existe de très nombreuses façons de faire. Pour le moment, il faut se limiter à une seule solution : assigner la fonction à une variable.</p>
+<pre><code class="js">var sayHello = function(){
+    console.log('Bonjour !')
+}
+sayHello() // Affiche : « Bonjour ! »
+</code></pre>
+
+<p>La variable <em>sayHello</em> est devenue une fonction.</p>
+<h2 id="-_7">----</h2>
+<h1 id="les-objets-et-les-tableaux">Les objets et les tableaux</h1>
+<hr />
+<h2 id="introduction-aux-objets">Introduction aux objets</h2>
+<p>JavaScript est un langage orienté objet, cela veut dire que le langage dispose d’objets, qui disposent d’une structure. JavaScript met à notre disposition des objets natifs : un nombre, une chaîne de caractères, un booléen. On dit que JavaScript n’est pas un langage typé car les variables contiennent toujours la même chose : un objet. Cet objet peut être de nature différente (nombre, booléen…). Il est également possible de créer nos propres objets, ce qui sera après.</p>
+<p>Les objets contiennent trois choses distinctes :
+- un constructeur
+  - code utilisé quand on utilise un nouvel objet
+  - permet d’effectuer des actions comme définir diverses variables
+  - réalisé automatiquement pour les objets natifs
+- des propriétés
+  - une propriété est une variable contenue dans l’objet
+- des méthodes
+  - il est possible de modifier l’objet grâce aux méthodes qui sont des fonctions contenues dans l’objet, qui permettent de réaliser des opérations sur le contenu de l’objet</p>
+<pre><code class="js">var myString = 'Ceci est une chaîne de caractères' // On crée un objet String
+
+console.log(myString.length) // On affiche le nombre de caractères, au moyen de la propriété « length »
+
+console.log(myString.toUpperCase()) // On récupère la chaîne en majuscules, avec la méthode toUpperCase()
+</code></pre>
+
+<p>Le point après un objet permet d’accéder aux propriétés et aux méthodes d’un objet.</p>
+<p>Nous avons déjà découvert trois objets natif : Number, Boolean, String. On allons maintenant découvrir l’objet <strong>Array</strong> qui gère les tableaux.</p>
+<hr />
+<h2 id="les-tableaux">Les tableaux</h2>
+<p>Un tableau, array en anglais, contient plusieurs valeurs appelées <strong>item</strong>. Chaque item est accessible au moyen d’un indice dont la numérotation commence à 0.</p>
+<pre><code class="js">var myArray = [1, 2, 3, 4, 5]
+
+console.log(myArray.length) // affiche 5
+console.log(myArray[0]) // affiche 1, le premier élément du tableau
+myArray[0]=8 // modifie la valeur du premier élément du tableau
+console.log(myArray[0]) // affiche 8, le premier élément du tableau
+console.log(myArray[myArray.length-1]) // affiche 5, le dernier élément du tableau
+</code></pre>
+
+<p>Pour plus de détails sur les tableaux, voir la partie <em>Objets et fonctions utiles en JavaScript</em>.</p>
+<hr />
+<h2 id="les-objets-litteraux">Les objets littéraux</h2>
+<h3 id="la-syntaxe-dun-objet">La syntaxe d’un objet</h3>
+<p>Il est possible d’accéder aux propriétés d'un objet via un identifiant. Un objet est similaire à un tableau sauf que l’on met des accolades à la place des crochets.</p>
+<pre><code class="js">var myObject = {
+    propertyName1: propertyValue1,
+    propertyName2: propertyValue2,
+    methode1: function(){    
+    }
+}
+</code></pre>
+
+<p>Pour définir dès l’initialisation les items à ajouter, il suffit d’écrire l’identifiant suivi de deux points et de la valeur à lui attribuer. La séparation des items se fait comme pour un tableau, avec une virgule.</p>
+<pre><code class="js">var louis = {
+    prenom: 'Louis',
+    nom: 'Varlet',
+    direPapa: function(){
+        console.log(&quot;Papa !&quot;)
+    }
+}
+
+// Accès aux propriétés
+console.log(louis) // permet d'accéder à l'objet louis
+console.log(typeof louis) // affiche object
+console.log(louis.prenom) // affiche Louis
+console.log(louis[&quot;prenom&quot;]) // affiche Louis (méthode est utile si l’identifiant est contenu dans une variable)
+
+// Ajouter une propriété en spécifiant un identifiant qui n’est pas encore présent.
+console.log(louis.age) // affiche undefined
+louis.age = 1
+console.log(louis.age) // affiche 1
+louis[&quot;prenomPere&quot;] = &quot;Gaëtan&quot; // on peut aussi le faire avec les crochets
+console.log(louis.prenomPere) // affiche Gaëtan
+
+// Exécution d'une méthode
+louis.direPapa() // affiche Papa !
+</code></pre>
+
+<p>Autre façon de créer un objet :</p>
+<pre><code class="js">var gaetan = new Object()
+gaetan.prenom = 'Gaëtan'
+gaetan.nom = 'Varlet'
+</code></pre>
+
+<h3 id="parcourir-un-objet-avec-for-in">Parcourir un objet avec <em>for in</em></h3>
+<p>Il n’est pas possible d’utiliser une boucle <em>for</em> car elle incrémente une variable numérique ce qui est inutile sur un objet littéral puisque nous devons posséder un identifiant. La boucle <strong>for in</strong> ne sert qu’à une chose : parcourir un objet.<br />
+Le fonctionnement est quasiment le même que pour un tableau, excepté qu’il suffit de fournir une “variable clé” qui reçoit un identifiant (au lieu d’un index) et de spécifier l’objet à parcourir :</p>
+<pre><code class="js">const louis = {
+    prenom: &quot;Louis&quot;,
+    nom: &quot;Varlet&quot;
+}
+for(let property in louis){
+    console.log(louis[property])
+}
+// affiche Louis
+// affiche Varlet
+</code></pre>
+
+<h3 id="utilisation-des-objets-litteraux">Utilisation des objets littéraux</h3>
+<p>Ils peuvent être utile pour ordonner un code. On les utilise aussi dans les fonctions, car return ne sait retourner qu’une seule variable. Avec un objet, il est possible de retourner plusieurs variables en stockant les résultats dans l’objet, plus commode qu’un tableau.
+Exemple d’une fonction qui calcule des coordonnées d’un élément HTML sur une page Web et retourne les coordonnées x et y :</p>
+<pre><code class="js">function getCoords() {
+    /* Script incomplet, juste pour l'exemple */
+    return {
+        x: 12,
+        y: 21
+    }
+}
+
+var coords = getCoords()
+
+console.log(coords.x) // 12
+console.log(coords.y) // 21
+</code></pre>
+
+<h3 id="les-constructeurs">Les constructeurs</h3>
+<p>Ils permettent de créer un moule pour créer plusieurs objets à partir de ce moule</p>
+<pre><code class="js">function Dog(name, color, age){
+    this.name = name
+    this.color = color
+    this.age = age
+    this.aboie = function(){
+        console.log(&quot;wouf wouf &quot;+this.name)
+    }
+}
+
+var monChien = new Dog(&quot;Rex&quot;, &quot;noir&quot;, 6)
+console.log(monChien); // affiche le chien
+monChien.aboie(); // affiche : wouf wouf Rex
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "search": 83, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

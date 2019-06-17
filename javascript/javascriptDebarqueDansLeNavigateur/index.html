@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Javascript débarque dans le navigateur - Gaëtan Varlet</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Gaëtan Varlet</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Sommaire</a>
+                            </li>
+                            <li >
+                                <a href="../../tutoriel-linux/">Linux</a>
+                            </li>
+                            <li >
+                                <a href="../../html-css/">HTML/CSS</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Javascript <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../">Sommaire</a>
+</li>
+                                    
+<li >
+    <a href="../lesBasesDeJavaScript/">Les bases de JavaScript</a>
+</li>
+                                    
+<li >
+    <a href="../vraimentBienComprendreJavaScript/">Vraiment bien comprendre JavaScript</a>
+</li>
+                                    
+<li >
+    <a href="../developpementModerneJavascript/">Développement moderne Javascript et ES6, ES7</a>
+</li>
+                                    
+<li >
+    <a href="../objetsEtFonctionsUtilesJavascript/">Objets et fonctions utiles Javascript</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Javascript débarque dans le navigateur</a>
+</li>
+                                    
+<li >
+    <a href="../frameworksJavascript/">Les bibliothèques et frameworks JavaScript (TODO)</a>
+</li>
+                                    
+<li >
+    <a href="../modelerVosPagesWeb/">Modeler vos pages web (RECUP DES CHOSES PUIS SUPPRIMER)</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../objetsEtFonctionsUtilesJavascript/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../frameworksJavascript/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#javascript-debarque-dans-le-navigateur">JavaScript débarque dans le navigateur</a></li>
+            <li><a href="#-">----</a></li>
+        <li class="main "><a href="#javascript-dans-le-navigateur">JavaScript dans le navigateur</a></li>
+            <li><a href="#lobjet-window">L'objet Window</a></li>
+            <li><a href="#lobjet-location">L'objet Location</a></li>
+            <li><a href="#lobjet-document-le-dom">L'objet Document : le DOM</a></li>
+            <li><a href="#-_1">----</a></li>
+        <li class="main "><a href="#javascript-et-le-dom">JavaScript et le DOM</a></li>
+            <li><a href="#lheritage-des-proprietes-et-des-methodes">L'héritage des propriétés et des méthodes</a></li>
+            <li><a href="#hierarchie-des-elements">Hiérarchie des éléments</a></li>
+            <li><a href="#recuperer-et-modifier-les-elements">Récupérer et modifier les éléments</a></li>
+            <li><a href="#modifier-le-style">Modifier le style</a></li>
+            <li><a href="#modifier-les-classes-css">Modifier les classes CSS</a></li>
+            <li><a href="#modifier-les-attributs">Modifier les attributs</a></li>
+            <li><a href="#selectionner-les-elements">Sélectionner les éléments</a></li>
+            <li><a href="#selectionner-avec-query-selector">Sélectionner avec Query Selector</a></li>
+            <li><a href="#modifier-lordre-des-elements">Modifier l'ordre des éléments</a></li>
+            <li><a href="#creer-des-elements">Créer des éléments</a></li>
+            <li><a href="#-_2">----</a></li>
+        <li class="main "><a href="#les-evenements-javascript">Les événements Javascript</a></li>
+            <li><a href="#quest-ce-quun-evenement">Qu'est-ce qu'un événement ?</a></li>
+            <li><a href="#on-event-handler">On-Event Handler</a></li>
+            <li><a href="#event-listener">Event Listener</a></li>
+            <li><a href="#propagation-des-evenements">Propagation des événements</a></li>
+            <li><a href="#proprietes-de-lobjet-event">Propriétés de l'objet Event</a></li>
+            <li><a href="#methodes-de-lobjet-event">Méthodes de l'objet Event</a></li>
+            <li><a href="#-_3">----</a></li>
+        <li class="main "><a href="#requetes-http-ajax">Requêtes HTTP - Ajax</a></li>
+            <li><a href="#quest-ce-quune-requete-http">Qu'est-ce qu'une requête HTTP ?</a></li>
+            <li><a href="#requetes-http-avec-xmlhttprequest">Requêtes HTTP avec XMLHttpRequest</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="javascript-debarque-dans-le-navigateur">JavaScript débarque dans le navigateur</h1>
+<h2 id="-">----</h2>
+<h1 id="javascript-dans-le-navigateur">JavaScript dans le navigateur</h1>
+<hr />
+<h2 id="lobjet-window">L'objet Window</h2>
+<p>Lorsque JavaScript est exécuté dans le navigateur, l'objet global est Window. Il représente la fenêtre du navigateur. Il possède des propriétés et des méthodes. On peut y accéder directement sans mettre le mot <em>window</em> car c'est l'objet global (il est dit implicite).</p>
+<pre><code class="js">// affiche la largeur du navigateur
+console.log(window.innerWidth)
+console.log(innerWidth)
+</code></pre>
+
+<ul>
+<li><code>alert()</code> n'est pas une fonction mais une méthode de l'objet window. <code>window.alert('Hello World')</code> est équivalent à <code>alert('Hello World')</code></li>
+<li>en revanche isNan() ou parseInt ne dépendent pas d'un objet, ce sont des fonctions globales. Il n'y en a pas beaucoup</li>
+<li>lorsqu'on déclare une variable dans le contexte global du script, cette variable devient une propriété de l'objet window
+toute variable non déclarée (utilisée sans écrire le mot-clé var) devient une propriété de window, quelque soit l'endroit où on se situe. Ecrire text = 'toto' revient donc à écrire window.text = 'toto'. Il est conseillé de toujours déclarer une variable avec var. Pour déclarer une variable globale dans une fonction, on pourra spécifier explicitement l'objet window</li>
+</ul>
+<hr />
+<h2 id="lobjet-location">L'objet Location</h2>
+<p>C'est une propriété de l'objet global Window. Il a lui-même des propriétés et des méthodes. Il contient des informations sur où se trouve notre navigateur (URL, etc...).</p>
+<pre><code class="js">location.reload() // relancer la page
+location.replace(&quot;URL&quot;) // permet de change d'URL
+</code></pre>
+
+<hr />
+<h2 id="lobjet-document-le-dom">L'objet Document : le DOM</h2>
+<p>C'est une propriété de l'objet Window. C'est la représentation de notre page HTML, plus précisemment la la balise <code>&lt;html&gt;</code>. Avec JavaScript, on va manipuler le DOM. On peut voir les propriétés de l'objet document avec la commande <code>console.log(window)</code> et le contenu de l'objet document avec la commande <code>console.log(window.document)</code>.</p>
+<p>Le document a des propriétés que l'on peut modifier, ajouter, déplacer, supprimer. Par exemple le titre de la page :</p>
+<pre><code class="js">console.log(document.title) // affiche : JavaScript (titre présent dans la page HTML)
+document.title = &quot;Mon nouveau titre&quot;
+console.log(document.title) // affiche :  Mon nouveau titre
+
+console.log(document.body) // affiche le body
+</code></pre>
+
+<h3 id="petit-historique">Petit historique</h3>
+<p>Le DOM est une interface de programmation pour les documents XML et HTML, qui permet via le JavaScript d'accéder au code XML et/ou HTML d'un document. On peut modifier, ajouter, déplacer, supprimer des éléments HTML (une paire de balises HTML)</p>
+<p>Au début du JavaScript, le DOM n'était pas unifié, c'est-à-dire que deux navigateurs possédaient un DOM différent, donc la manière d'accéder à un élément HTML différait d'un navigateur à l'autre. Il fallait donc coder différemment en fonction du navigateur. Le W3C a publié une nouvelle spécification DOM-1, pour DOM Level 1 qui définit le DOM et comment sont schématisés les documents HTML et XML, sous forme d'un arbre, ou d'une hiérarchie. L'élément <html> contient 2 éléments enfants : <head> et <body>, etc... Ensuite, la spécification DOM-2 a été publié avec l'introduction de la méthode getElementById() qui permet de récupérer un élément en connaissant son ID.</p>
+<h3 id="la-structure-dom">La structure DOM</h3>
+<p>Le DOM pose comme concept que la page Web est une hiérarchie d'éléments. On peut schématiser une page web comme ceci :</p>
+<p><img alt="Schéma d'une page web simple" src="img/pageWebSimple.png" /></p>
+<p>Voici le code source correspondant :</p>
+<pre><code class="html">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;title&gt;Le titre de la page&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;p&gt;Du texte &lt;a&gt;et un lien&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>L'élément <code>&lt;html&gt;</code> contient deux éléments, appelés <strong>enfants</strong> : <code>&lt;head&gt;</code> et <code>&lt;body&gt;</code>. Pour ces deux enfants, <code>&lt;html&gt;</code> est l'élément <strong>parent</strong>. Chaque élément est appelé <strong>noeud</strong> (<em>node</em> en anglais). <code>&lt;title&gt;</code> contient un élément enfant <code>#text</code> qui contient du texte. Le texte présent dans une page Web est vu par le DOM comme on noeud de type <code>#text</code>.</p>
+<h2 id="-_1">----</h2>
+<h1 id="javascript-et-le-dom">JavaScript et le DOM</h1>
+<hr />
+<h2 id="lheritage-des-proprietes-et-des-methodes">L'héritage des propriétés et des méthodes</h2>
+<p>Les éléments HTML sont vus par JavaScript comme des objets possédant des propriétés et des méthodes. Tous ne possèdent pas les mêmes propriétés et méthodes. Certaines sont communes car tous les éléments HTML sont d'un même type : Node.
+Une <div> est un objet HTTMLDivElement, sous-objet HTMLElement, lui-même sous-objet d'Element, lui-même sous-objet de Node. Les méthodes et propriétés de Node peuvent être utilisées depuis ses sous-objets grâce à l'héritage.</p>
+<hr />
+<h2 id="hierarchie-des-elements">Hiérarchie des éléments</h2>
+<ul>
+<li><code>children</code> renvoie une <em>HTML Collection</em> (un peu comme un tableau) des enfants de l'élément</li>
+<li><code>firstElementChild</code> et <code>lastElementChild</code> renvoient le premier et le dernier enfant de l'élément</li>
+<li><code>nextElementSibling</code> renvoie le prochain élément de même niveau</li>
+<li><code>parentElement</code> renvoie l'élément parent</li>
+</ul>
+<pre><code class="html">&lt;body&gt;
+    &lt;div&gt;
+        &lt;p&gt;Mon paragraphe 1&lt;/p&gt;
+        &lt;p&gt;Mon paragraphe 2&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<pre><code class="js">console.log(document.body.children) // [div, script]
+console.log(document.body.children[0].children) // [p, p]
+console.log(document.body.firstElementChild) // équivalent à children[0], retourne la div
+console.log(document.body.children[0].nextElementSibling) // affiche le script
+console.log(document.body.children[0].parentElement) // affiche le body
+</code></pre>
+
+<hr />
+<h2 id="recuperer-et-modifier-les-elements">Récupérer et modifier les éléments</h2>
+<p>Un <code>console.log()</code> d'un élément du DOM affiche la représentation HTML de l'élément, mais on ne voit pas ses propriétés. Pour voir les propriétés et méthodes d'un élément, il faut afficher tous les enfants de l'élément parent et cliquer sur l'élément enfant qui nous intéresse dans la console.</p>
+<pre><code class="js">console.log(document.body.children[0].children[1]) // affiche &lt;p&gt;Mon paragraphe 2&lt;/p&gt;
+console.log(document.body.children[0].children) // affiche l'HTML Collection avec ses 2 enfants. On peut cliquer sur chaque enfant pour voir ses attributs et méthodes
+</code></pre>
+
+<h3 id="le-contenu-innerhtml">Le contenu : innerHTML</h3>
+<p><code>innerHTML</code> permet de récupérer le code HTML enfant d'un élément sous forme de texte. Si les balises sont présentes, <code>innerHTML</code> les retournera sous forme de texte. Exemple :</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div id=&quot;myDiv&quot;&gt;
+        &lt;p&gt;Un peu de texte &lt;a&gt;et un lien&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const div = document.getElementById('myDiv')
+        console.log(div.innerHTML) // affiche : &lt;p&gt;Un peu de texte &lt;a&gt;et un lien&lt;/a&gt;&lt;/p&gt;
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>Autre exemple où l'on va modifier le contenu du paragraphe :</p>
+<pre><code class="js">console.log(document.body.children[0].children[0].innerHTML) // affiche Un peu de texte &lt;a&gt;et un lien&lt;/a&gt;
+document.body.children[0].children[0].innerHTML = &quot;&lt;strong&gt;Nouveau Texte&lt;/strong&gt;&quot;
+console.log(document.body.children[0].children[0].innerHTML) // affiche Nouveau Texte (en gras car les les balises strong sont interprétées par le navigateur pour mettre le texte en gras)
+</code></pre>
+
+<p>Il est aussi possible d'ajouter ou d'éditer du HTML</p>
+<pre><code class="js">document.getElementById('myDiv').innerHTML = '&lt;blockquote&gt;Je mets une citation à la place du paragraphe&lt;/blockquote&gt;'
+document.getElementById('myDiv').innerHTML += ' et &lt;strong&gt;une portion mise en emphase&lt;/strong&gt;.'
+</code></pre>
+
+<p>Il ne faut pas l'utiliser dans une boucle car <code>innerHTML</code> ralentit l'exécution du code. Il vaut mieux la concaténer dans une variable et ensuite ajouter le tout via <code>innerHTML</code>.</p>
+<h3 id="innertext-et-textcontent">innerText et textContent</h3>
+<p><code>innerText</code> pour IE et <code>textContent</code> pour les autres navigateurs sont des propriétés analogues à <code>innerHTML</code>, qui permettent de récupérer le contenu d'un élément <strong>sous forme de texte mais sans les balises</strong>, et permet aussi de modifier le contenu de l'élément.
+- <code>innerText</code> a été introduite dans IE, mais jamais standardisée et n'est pas suportée par tous les navigateurs
+- <code>textContent</code> est la version standardisée d'<code>innerText</code>. Elle est reconnue par tous les navigateurs à l'exception des versions antérieures à IE9.</p>
+<pre><code class="js">console.log(document.body.children[0].children[0].textContent) // affiche Un peu de texte et un lien
+document.body.children[0].children[0].textContent = &quot;&lt;strong&gt;Nouveau Texte&lt;/strong&gt;&quot; // les balises ne sont pas interprétés par le navigateur mais écrites comme du texte affiché dans le navigateur
+console.log(document.body.children[0].children[0].textContent) // affiche &lt;strong&gt;Nouveau Texte&lt;/strong&gt;
+</code></pre>
+
+<hr />
+<h2 id="modifier-le-style">Modifier le style</h2>
+<p>La propriété <code>style</code> permet de modifier le style CSS des éléments. Les types correspondent au CSS sauf qu'il faut les écrire en kamel case. Par exemple écrire <strong>backgroundColor</strong> en JavaScript au lieu de <strong>background-color</strong> en CSS.</p>
+<pre><code class="js">document.body.children[0].style.backgroundColor = &quot;red&quot; // mais le fond de la div en rouge
+</code></pre>
+
+<hr />
+<h2 id="modifier-les-classes-css">Modifier les classes CSS</h2>
+<pre><code class="html">&lt;body&gt;
+    &lt;div class=&quot;super&quot;&gt;
+        &lt;p&gt;Mon paragraphe 1&lt;/p&gt;
+        &lt;p&gt;Mon paragraphe 2&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p><code>classList</code> permet d'avoir la liste des classes CSS que possède un élément. Les méthodes <code>add()</code> et <code>remove()</code> permettent d'ajouter et d'enlever des classes CSS. <code>toggle()</code> permet d'enlever la classe si elle présente et de l'ajouter si elle n'y est pas.</p>
+<pre><code class="js">console.log(document.body.children[0].classList) // affiche [&quot;super&quot;]
+document.body.children[0].classList.add(&quot;toto&quot;) // ajoute la classe toto à la div et applique son style
+console.log(document.body.children[0].classList) // affiche [&quot;super&quot;, &quot;toto&quot;]
+document.body.children[0].classList.remove(&quot;toto&quot;) // enlève la classe toto de la div et enlève son style
+console.log(document.body.children[0].classList) // affiche [&quot;super&quot;]
+document.body.children[0].classList.toggle(&quot;toto&quot;)
+console.log(document.body.children[0].classList) // affiche [&quot;super&quot;, &quot;toto&quot;]
+document.body.children[0].classList.toggle(&quot;toto&quot;)
+console.log(document.body.children[0].classList) // affiche [&quot;super&quot;]
+</code></pre>
+
+<p>On peut aussi utiliser <code>className</code> pour appliquer une classe CSS à un élément : <code>document.getElementById('p1').className = 'bleu'</code></p>
+<hr />
+<h2 id="modifier-les-attributs">Modifier les attributs</h2>
+<p>Un attribut correspond aux informations présentes dans une balise, par exemple <em>src</em> dans la balise <em>script</em> : <code>&lt;script src="index.js"&gt;&lt;/script&gt;</code>. Les méthodes <code>getAttribute()</code> et <code>setAttribute()</code> permettent de récupérer et modifier un attribut d'un élément HTML.</p>
+<pre><code class="js">console.log(document.body.children[1].getAttribute(&quot;src&quot;)) // affiche index.js
+document.body.children[1].setAttribute(&quot;src&quot;, &quot;toto.js&quot;) // modifie la valeur de l'attribut renseignée
+console.log(document.body.children[1].getAttribute(&quot;src&quot;)) // affiche toto.js
+</code></pre>
+
+<hr />
+<h2 id="selectionner-les-elements">Sélectionner les éléments</h2>
+<p>Pour sélectionner un élément, on peut le faire plus simplement qu'en partant de <code>body</code> et en descendant avec <code>children</code>. La méthode <code>getElementById()</code> de l'objet document permet de sélectionner un élément par son id, <code>getElementsByTagName()</code> sélectionne les éléments qui correspondent à un tag HTML, par exemple <code>h1</code> ou <code>p</code>, et <code>getElementsByClassName()</code> sélectionne les éléments qui correspondent à une classe CSS.<br />
+On peut aussi stocker les éléments dans une variable.</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div class=&quot;super&quot;&gt;
+        &lt;h1 id=&quot;titre&quot;&gt;Mon Titre&lt;/h1&gt;
+        &lt;p class=&quot;maClasse&quot;&gt;Mon paragraphe 1&lt;/p&gt;
+        &lt;p&gt;Mon paragraphe 2&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<pre><code class="js">console.log(document.getElementById(&quot;titre&quot;)) // affiche &lt;h1 id=&quot;titre&quot;&gt;Mon Titre&lt;/h1&gt;
+console.log(document.getElementsByTagName(&quot;p&quot;)) // affiche une HTML Collection avec les 2 paragraphes
+console.log(document.getElementsByClassName(&quot;maClasse&quot;)) // affiche une HTML Collection avec l'élément qui a cette classe
+
+const monTitre = document.getElementById(&quot;titre&quot;)
+console.log(monTitre) // affiche &lt;h1 id=&quot;titre&quot;&gt;Mon Titre&lt;/h1&gt;
+</code></pre>
+
+<hr />
+<h2 id="selectionner-avec-query-selector">Sélectionner avec Query Selector</h2>
+<p>La méthode <code>querySelector()</code> permet d'utiliser les sélecteurs CSS pour sélectionner un élément. Si plusieurs éléments correspondent, seul le premier élément sera sélectionné. La méthode <code>querySelectorAll()</code> renvoie une liste, et permet donc de sélectionner plusieurs éléments.</p>
+<pre><code class="js">console.log(document.querySelector(&quot;.maClasse&quot;)) // affiche &lt;p class=&quot;maClasse&quot;&gt;Mon paragraphe 1&lt;/p&gt;
+console.log(document.querySelectorAll(&quot;.maClasse&quot;)) // affiche une NodeList d'un élément avec le paragraphe 1
+
+console.log(document.querySelector(&quot;p&quot;)) // affiche &lt;p class=&quot;maClasse&quot;&gt;Mon paragraphe 1&lt;/p&gt; (le 1er paragraphe rencontré)
+console.log(document.querySelectorAll(&quot;p&quot;)) // affiche une NodeList de deux éléments avec les paragraphes
+</code></pre>
+
+<hr />
+<h2 id="modifier-lordre-des-elements">Modifier l'ordre des éléments</h2>
+<p>La méthode <code>insertBefore()</code> permet d'insérer un élément HTML avant un autre élément. Si l'élément existe déjà, il est d'abord supprimé avant d'être replacé. La méthode <code>appendChild()</code> permet d'ajouter un élément à un autre élément en tant qu'enfant. La méthode <code>replaceChild()</code> permet de remplacer un élément enfant par un autre. La méthode <code>removeChild()</code> permet de supprimer un élément, <code>remove()</code> le permet aussi de manière plus simple mais n'est pas supporté par les anciennes versions des navigateurs.</p>
+<pre><code class="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;body&gt;
+    &lt;div class=&quot;rouge&quot;&gt;Rouge&lt;/div&gt;
+    &lt;div class=&quot;vert&quot;&gt;Vert&lt;/div&gt;
+    &lt;div class=&quot;bleu&quot;&gt;Bleu&lt;/div&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<pre><code class="css">.rouge, .vert, .bleu {
+    width: 300px;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+.rouge {
+    background-color: red;
+}
+.vert {
+    background-color: green;
+}
+.bleu {
+    background-color: blue;
+}
+</code></pre>
+
+<pre><code class="js">const rouge = document.querySelector(&quot;.rouge&quot;)
+const vert = document.querySelector(&quot;.vert&quot;)
+const bleu = document.querySelector(&quot;.bleu&quot;)
+
+document.body.insertBefore(bleu,vert) // insère l'élément bleu avant l'élément vert
+
+rouge.appendChild(bleu) // ajoute l'élément bleu en tant qu'enfant de rouge
+
+document.body.replaceChild(bleu, rouge) // remplace l'élément rouge par l'élément bleu
+
+bleu.parentElement.removeChild(bleu) // permet de supprimer l'élément bleu
+bleu.remove() // permet aussi de supprimer l'élément bleu mais n'est pas supporté par les anciens navigateurs
+</code></pre>
+
+<hr />
+<h2 id="creer-des-elements">Créer des éléments</h2>
+<p>Pour créer un élément, on va utiliser la méthode <code>createElement()</code> que l'on va ensuite insérer dans le DOM avec la méthode <code>appendChild()</code></p>
+<pre><code class="css">/* creation d'une classe CSS jaune que l'on va appliquer sur un élément que l'on va créer en JS */
+.jaune {
+    width: 300px;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    background-color: yellow
+}
+</code></pre>
+
+<pre><code class="js">const jaune = document.createElement(&quot;div&quot;) //création d'un élément div
+jaune.classList.add(&quot;jaune&quot;) // application de la classe jaune sur la div
+jaune.textContent = &quot;Jaune&quot; // ajout du texte Jaune dans la div
+document.body.appendChild(jaune) // insertion de l'élément jaune en tant qu'enfant du body
+</code></pre>
+
+<p>Exemple de création d'une fonction qui crée des éléments que l'on va appeler plusieurs fois pour remplir une liste</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;ul&gt;&lt;/ul&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<pre><code class="js">function planifierTache(heure, tache){
+    const nouvelleTache = document.createElement(&quot;li&quot;)
+    nouvelleTache.innerHTML = `&lt;h3&gt;${heure}&lt;/h3&gt;&lt;p&gt;${tache}&lt;/p&gt;` // innerHTML permet de dire le code HTML que l'on veut mettre à l'intérieur d'un élément HTML
+    document.querySelector(&quot;ul&quot;).appendChild(nouvelleTache)
+}
+
+planifierTache('7h30', 'Réveil')
+planifierTache('7h40', 'Petit-déjeuner')
+planifierTache('8h00', 'Douche')
+</code></pre>
+
+<h2 id="-_2">----</h2>
+<h1 id="les-evenements-javascript">Les événements Javascript</h1>
+<hr />
+<h2 id="quest-ce-quun-evenement">Qu'est-ce qu'un événement ?</h2>
+<p>Les événements permettent de déclencher une fonction selon qu'une action s'est produite ou non, par exemple faire apparaître une fenêtre <code>alert()</code> au survol d'une zone d'un élément. Ils sont de différentes natures, par exemple :
+- cliquer sur un élément
+- appuyer sur une touche du clavier
+- lorsque le navigateur a fini de charger la page Web</p>
+<p>Un événement est basé sur l'interface <code>Event</code>, avec par exemple les classes <code>MouseEvent</code>et <code>KeyboardEvent</code> pour les événements liés à la souris et au clavier.</p>
+<hr />
+<h2 id="on-event-handler">On-Event Handler</h2>
+<pre><code class="html">&lt;body&gt;
+    &lt;div class=&quot;rouge&quot;&gt;Rouge&lt;/div&gt;
+    &lt;div class=&quot;vert&quot;&gt;Vert&lt;/div&gt;
+    &lt;div class=&quot;bleu&quot;&gt;Bleu&lt;/div&gt;
+    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<pre><code class="js">console.log(rouge) // affiche &lt;div class=&quot;rouge&quot;&gt;Rouge&lt;/div&gt;
+console.log(rouge.parentElement.children) // affiche la collection HTML des éléménts enfants du parent, dont rouge, pour lesquels on peut voir les propriétés et méthodes
+</code></pre>
+
+<p>Les propriétés qui commencent par <code>on</code> sont liés aux événements. Elles sont appelées <strong>On-Event Handler</strong>, que l'on peut traduire par <strong>gestionnaire d'événements</strong>. Par exemple, la propriété <code>onload</code> gère l'événement <code>load</code>.</p>
+<p>L'événement <strong>load</strong> se produit quand la page a fini de se charger :</p>
+<pre><code class="js">window.onload = function(){
+    console.log(&quot;la page est chargée&quot;)
+}
+console.log(&quot;après le onload&quot;) // s'affiche AVANT &quot;la page est chargée&quot;
+</code></pre>
+
+<p>On peut aussi déclarer une fonction et l'appeler sur la propriété onload :</p>
+<pre><code class="js">function windowReady(){
+    console.log(&quot;la page est chargée&quot;)
+}
+
+window.onload = windowReady()
+</code></pre>
+
+<p>On peut encapsuler tout le code JS dans un <code>windows.onload</code> pour s'assurer que tous les éléments que l'on manipule sont chargés :</p>
+<pre><code class="js">window.onload = function(){
+    const rouge = document.querySelector(&quot;.rouge&quot;)
+    const vert = document.querySelector(&quot;.vert&quot;)
+    const bleu = document.querySelector(&quot;.bleu&quot;)
+}
+</code></pre>
+
+<p>Exemple de l'événement clic, déclenché à chaque clic sur l'élément rouge :</p>
+<pre><code class="js">rouge.onclick = function(event){
+    console.log(&quot;clic sur la div rouge !&quot;)
+    console.log(event)
+}
+</code></pre>
+
+<p>On peut récupérer l'événement en le passant en argument de la fonction en lui donnant le nom que l'on veut car le fait de mettre un argument à la fonction nous donne forcément l'événement.</p>
+<p>On peut écrire les Event Handler directement dans le code HTML, ce qui n'est pas conseillé :</p>
+<pre><code class="html">&lt;div class=&quot;vert&quot; onclick=&quot;console.log('toto')&quot;&gt;Vert&lt;/div&gt;
+</code></pre>
+
+<p>On ne peut pas définir plusieurs fois le même event handler sur le même élément. Auquel cas, seul le dernier event handler va fonctionner car c'est une propriété à laquelle on attache une fonction, donc la dernière a écrasée les précédentes.</p>
+<pre><code class="js">rouge.onclick = function(event){
+    console.log(&quot;clic sur la div rouge !&quot;)
+    console.log(event)
+}
+
+rouge.onclick = function(){
+    console.log(&quot;deuxième message&quot;) // seul ce message va s'afficher
+}
+</code></pre>
+
+<hr />
+<h2 id="event-listener">Event Listener</h2>
+<p>Un <strong>Event Listener</strong>, ou <strong>écouteur d'événement</strong> en français, est une autre façon d'interagir avec les événements.</p>
+<p>Il faut utiliser la méthode <code>addEventListener()</code> qui prend en argument le nom de l'événementet la fonction a exécuter :</p>
+<pre><code class="js">rouge.addEventListener(&quot;click&quot;, function(event){
+    console.log(&quot;clic sur la div rouge !&quot;)
+    console.log(event)
+})
+
+function afficherMessage(){
+    console.log(&quot;deuxième message&quot;)
+}
+
+rouge.addEventListener(&quot;click&quot;, afficherMessage)
+</code></pre>
+
+<p>On peut ajouter plusieurs event listener sur le même événement et sur le même élément, ils seront tous exécutés. On peut aussi déclarer une fonction en externe et l'appeler dans le listener <strong>sans l'exécuter</strong>, juste en marquant son nom. La fonction anonyme en argument n'était pas éexécutée non plus, le listeneur le fait quand l'événement a lieu.</p>
+<p>On peut aussi supprimer un event listener avec <code>removeEventListener()</code>. Dans l'exemple suivant, quand on clique sur vert, on enlève le deuxième event listener de rouge, et quand on clique ensuite sur rouge, il n'y a plus que le premier qui s'exécute :</p>
+<pre><code class="js">vert.addEventListener(&quot;click&quot;, function(){
+    rouge.removeEventListener(&quot;click&quot;, afficherMessage)
+})
+</code></pre>
+
+<hr />
+<h2 id="propagation-des-evenements">Propagation des événements</h2>
+<pre><code class="html">&lt;div id=&quot;parent&quot;&gt;
+    &lt;div id=&quot;enfant&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<pre><code class="css">#parent {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+
+#enfant {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+</code></pre>
+
+<pre><code class="js">const parent = document.querySelector(&quot;#parent&quot;)
+const enfant = document.querySelector(&quot;#enfant&quot;)
+
+parent.addEventListener(&quot;click&quot;, parentFonction)
+enfant.addEventListener(&quot;click&quot;, enfantFonction)
+
+
+function enfantFonction(){
+    console.log(&quot;clic sur l'enfant&quot;)
+}
+
+function parentFonction(){
+    console.log(&quot;clic sur le parent&quot;)
+}
+</code></pre>
+
+<p>Dans cet exemple, il y a une div bleu enfant contenu dans une div rouge rouge. Lorsqu'on clique sur la div parent, <code>clic sur le parent</code> s'écrit dans la log, et lorsqu'on clique sur la div enfant, <code>clic sur l'enfant</code> puis <code>clic sur le parent</code> s'affichent car l'enfant est contenu dans le parent.</p>
+<p>Les événements sont faits de deix phases :
+- phase de <strong>capture</strong> : part des parents et va vers les enfants
+- phase de <strong>bouillonnement</strong> (<strong>event bubbling</strong>) : part de l'enfant et va vers les parents</p>
+<p>Par défaut, addEventListener s'exécute pendant la phase de bouillenement (les événements débutent par les enfants et remontent vers les parents). Pour qu'elle s'exécute pendant la phase de capture, il faut ajouter un troième argument <code>true</code> à la méthode <code>addEventListener</code>. Dans l"exemple suivant, lorsqu'on clique sur la div enfant, <code>clic sur parent</code> s'affiche donc avant <code>clic sur enfant</code> :</p>
+<pre><code class="js">parent.addEventListener(&quot;click&quot;, parentFonction, true)
+enfant.addEventListener(&quot;click&quot;, enfantFonction, true)
+</code></pre>
+
+<hr />
+<h2 id="proprietes-de-lobjet-event">Propriétés de l'objet Event</h2>
+<p>Certaines propriétés sont communes à tous les événements, d'autres sont spécifiques à certains événement comme les événements souris, ou les événements claviers :</p>
+<pre><code class="js">function parentFonction(event){
+    console.log(&quot;clic sur le parent&quot;)
+    console.log(event)
+    console.log(event.type) // affiche : click, correspond au type de l'événement
+    console.log(event.target) // affiche la div parent, correspond à l'élément qui a débuté l'événement
+    console.log(event.currentTarget)
+
+    console.log(event.clientX) // affiche où l'on se place sur l'axe horizontale, propriété spécifique au MouseEvent
+
+}
+</code></pre>
+
+<hr />
+<h2 id="methodes-de-lobjet-event">Méthodes de l'objet Event</h2>
+<p>La méthode <code>stopPropagation()</code> permet de stopper la propagation d'un événement. Dans l'exemple suivant, en cliquant sur l'enfant, on ne verra que le clic sur l'enfant mais pas le clic sur le parent. L'événement a été stoppé et n'a donc pas atteint la div parent.</p>
+<pre><code class="js">function enfantFonction(event){
+    console.log(&quot;clic sur l'enfant&quot;)
+    event.stopPropagation()
+}
+</code></pre>
+
+<p>La méthode <code>preventDefault()</code> permet de ne pas traiter l'événement avec son action par défaut. Dans l'exemple suivant, lors de la soumission du formulaire, on écrit un message dans la log. Par défaut, la soumission d'un formulaire rafraîchit la page, le message dans la log disparaît donc aussitôt qu'il est apparu. Pour ne pas rafraîchir la page, on peut utiliser la méthode <code>preventDefault()</code>, le message restera alors affiché dans la log.</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;form&gt;
+        &lt;input type=&quot;text&quot; placeholder=&quot;Votre nom&quot;&gt;
+        &lt;button type=&quot;submit&quot;&gt;Envoyer&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<pre><code class="js">const form = document.querySelector(&quot;form&quot;)
+
+form.addEventListener(&quot;submit&quot;, envoyerFormulaire)
+
+function envoyerFormulaire(event){
+    event.preventDefault()
+    console.log(&quot;Formulaire envoyé&quot;)
+}
+</code></pre>
+
+<h2 id="-_3">----</h2>
+<h1 id="requetes-http-ajax">Requêtes HTTP - Ajax</h1>
+<hr />
+<h2 id="quest-ce-quune-requete-http">Qu'est-ce qu'une requête HTTP ?</h2>
+<p>Ajax est un raccourci pour <strong>Asynchronous JavaScript and XML</strong> (XML et JavaScript asynchrones).</p>
+<p>Ajax permet d'échanger avec le serveur via des requêtes HTTP sans rafraîchir toute la page mais uniquement certains élément de la page. Ces requêtes fonctionnent de manière asynchrones, c'est-à-dire que l'on traitera la réponse quand elle arrive sans attendre qu'elle arrive, ce qui permet de continuer à exécuter la suite du code.</p>
+<h2 id="requetes-http-avec-xmlhttprequest">Requêtes HTTP avec XMLHttpRequest</h2>
+<p><code>XMLHttpRequest</code> est l'objet qui permet de faire des requêtes Ajax. C'est l'objet de base qui sert à faire des requêtes HTTP. D'autres objets se basent dessus.</p>
+<p>Lors d'une requête HTTP, son état va varier, et nous pouvons récupérer chaque changement de cet état, avec l'événement <code>onreadystatechange</code>. L'état varie de 0 à 4. La requête est terminée à l'état 4.</p>
+<p>Exemple avec l'API Jsonplaceholder sur l'URL <code>/posts</code> en GET :</p>
+<pre><code class="js">const req = new XMLHttpRequest()
+const method = 'GET'
+const url = 'https://jsonplaceholder.typicode.com/posts'
+
+req.onreadystatechange = function(event){
+    if(this.readyState === XMLHttpRequest.DONE){// on aurait pu écrire 4 à la place, c'est pareil
+        if(this.status === 200){
+            console.log(
+                JSON.parse(this.responseText)
+            )
+        } else {
+            console.log(&quot;Statut Erreur : &quot;+this.status)
+        }
+    }
+}
+
+req.open(method, url)
+req.send()
+</code></pre>
+
+<p>Exemple d'une requête en POST :</p>
+<pre><code class="js">const req = new XMLHttpRequest()
+const method = 'POST'
+const url = 'https://jsonplaceholder.typicode.com/posts'
+
+const data = {
+    body: &quot;la la la&quot;,
+    title: &quot;mon titre&quot;,
+    userId: 1
+}
+
+req.onreadystatechange = function(event){
+    if(this.readyState === XMLHttpRequest.DONE){// on aurait pu écrire 4 à la place, c'est pareil
+        if(this.status === 201){
+            console.log(
+                JSON.parse(this.responseText)
+            )
+        } else {
+            console.log(&quot;Statut Erreur : &quot;+this.status)
+        }
+    }
+}
+
+req.open(method, url)
+req.send(data)
+</code></pre>
+
+<p>La méthode <code>open()</code> prend en argument la méthode HTTP puis l'url à appeler. Il y a ensuite des arguments optionels : <code>XMLHttpRequest.open(method, url, async, user, password)</code>
+- <code>async</code> : à <em>true</em> par défaut. On peut le mettre à <em>false</em> pour faire des requêtes synchrones, ce qui est déconseillé
+- <code>user</code> et <code>password</code> sont <em>null</em> par défaut et servent à l'authentification</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "search": 83, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

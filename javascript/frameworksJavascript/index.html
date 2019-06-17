@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>Gaëtan Varlet</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Les bibliothèques et frameworks JavaScript (TODO) - Gaëtan Varlet</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">Gaëtan Varlet</a>
+                    <a class="navbar-brand" href="../..">Gaëtan Varlet</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,48 +47,48 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">Sommaire</a>
+                                <a href="../..">Sommaire</a>
                             </li>
                             <li >
-                                <a href="/tutoriel-linux/">Linux</a>
+                                <a href="../../tutoriel-linux/">Linux</a>
                             </li>
                             <li >
-                                <a href="/html-css/">HTML/CSS</a>
+                                <a href="../../html-css/">HTML/CSS</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Javascript <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/javascript/">Sommaire</a>
+    <a href="../">Sommaire</a>
 </li>
                                     
 <li >
-    <a href="/javascript/lesBasesDeJavaScript/">Les bases de JavaScript</a>
+    <a href="../lesBasesDeJavaScript/">Les bases de JavaScript</a>
 </li>
                                     
 <li >
-    <a href="/javascript/vraimentBienComprendreJavaScript/">Vraiment bien comprendre JavaScript</a>
+    <a href="../vraimentBienComprendreJavaScript/">Vraiment bien comprendre JavaScript</a>
 </li>
                                     
 <li >
-    <a href="/javascript/developpementModerneJavascript/">Développement moderne Javascript et ES6, ES7</a>
+    <a href="../developpementModerneJavascript/">Développement moderne Javascript et ES6, ES7</a>
 </li>
                                     
 <li >
-    <a href="/javascript/objetsEtFonctionsUtilesJavascript/">Objets et fonctions utiles Javascript</a>
+    <a href="../objetsEtFonctionsUtilesJavascript/">Objets et fonctions utiles Javascript</a>
 </li>
                                     
 <li >
-    <a href="/javascript/javascriptDebarqueDansLeNavigateur/">Javascript débarque dans le navigateur</a>
+    <a href="../javascriptDebarqueDansLeNavigateur/">Javascript débarque dans le navigateur</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Les bibliothèques et frameworks JavaScript (TODO)</a>
 </li>
                                     
 <li >
-    <a href="/javascript/frameworksJavascript/">Les bibliothèques et frameworks JavaScript (TODO)</a>
-</li>
-                                    
-<li >
-    <a href="/javascript/modelerVosPagesWeb/">Modeler vos pages web (RECUP DES CHOSES PUIS SUPPRIMER)</a>
+    <a href="../modelerVosPagesWeb/">Modeler vos pages web (RECUP DES CHOSES PUIS SUPPRIMER)</a>
 </li>
                                 </ul>
                             </li>
@@ -100,21 +100,59 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../javascriptDebarqueDansLeNavigateur/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../modelerVosPagesWeb/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#les-bibliotheques-et-frameworks-javascript">Les bibliothèques et frameworks JavaScript</a></li>
+            <li><a href="#quest-ce-quun-framework-et-quelle-est-la-difference-entre-une-bibliotheque-et-un-framework">Qu'est-ce qu'un framework et quelle est la différence entre une bibliothèque et un framework ?</a></li>
+            <li><a href="#decouverte-de-react">Découverte de React</a></li>
+            <li><a href="#decouverte-dangular">Découverte d'Angular</a></li>
+            <li><a href="#decouverte-de-vuejs">Découverte de Vue.js</a></li>
+            <li><a href="#angular-react-ou-vuejs">Angular, React ou Vue.js</a></li>
+            <li><a href="#decouverte-de-nodejs">Découverte de Node.js</a></li>
+            <li><a href="#decouverte-dexpress">Découverte d'Express</a></li>
+            <li><a href="#decouverte-de-mongodb">Découverte de MongoDB</a></li>
+            <li><a href="#decouverte-de-mean-et-de-meteor">Découverte de MEAN et de Meteor (?)</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
-
-
+<h1 id="les-bibliotheques-et-frameworks-javascript">Les bibliothèques et frameworks JavaScript</h1>
+<hr />
+<h2 id="quest-ce-quun-framework-et-quelle-est-la-difference-entre-une-bibliotheque-et-un-framework">Qu'est-ce qu'un framework et quelle est la différence entre une bibliothèque et un framework ?</h2>
+<p>Un framework est une structure pour développer, c'est un cadre de travail qui va structurer le travail du développeur. Les frameworks font gagner du temps en prenant en charge les besoins récurents comme l'architecture du projet, ce qui permet de se focaliser sur le métier du projet.</p>
+<p>Une bibliothèque et un framework ont tous les deux pour but de faciliter le développement. Pour les différencier, on peut résumer en disant que notre code utilise une bibliothèque pour fonctionner alors qu'un framework utilise notre code pour fonctionner et créer l'ensemble de notre code. En général, une bibliothèque est un ensemble de fonctions et d'objets que notre code va utiliser en important la bibliothèque, par exemple jQuery.</p>
+<hr />
+<h2 id="decouverte-de-react">Découverte de React</h2>
+<hr />
+<h2 id="decouverte-dangular">Découverte d'Angular</h2>
+<hr />
+<h2 id="decouverte-de-vuejs">Découverte de Vue.js</h2>
+<hr />
+<h2 id="angular-react-ou-vuejs">Angular, React ou Vue.js</h2>
+<hr />
+<h2 id="decouverte-de-nodejs">Découverte de Node.js</h2>
+<hr />
+<h2 id="decouverte-dexpress">Découverte d'Express</h2>
+<hr />
+<h2 id="decouverte-de-mongodb">Découverte de MongoDB</h2>
+<hr />
+<h2 id="decouverte-de-mean-et-de-meteor">Découverte de MEAN et de Meteor (?)</h2></div>
         </div>
 
         <footer class="col-md-12">
@@ -122,11 +160,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "search": 83, "previous": 80};
         </script>
-        <script src="/js/base.js" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
